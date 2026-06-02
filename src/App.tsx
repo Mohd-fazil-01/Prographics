@@ -46,7 +46,7 @@ export default function App() {
         {activeTab === 'home' && (
           <div className="space-y-0">
             {/* High-Impact Hero Slat Banner Section */}
-            <section className="relative min-h-[580px] md:min-h-[700px] flex items-center pt-10 select-none overflow-hidden">
+            <section className="relative min-h-[480px] md:min-h-[580px] flex items-start pt-24 md:pt-36 select-none overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <img
                   alt="A high-end corporate lobby showcasing premium dimensional sign installation with crisp morning lights casting sharp patterns"
@@ -58,15 +58,15 @@ export default function App() {
               </div>
 
               {/* Dynamic text pane */}
-              <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto text-white space-y-8 py-12">
-                <div className="max-w-3xl space-y-6">
+              <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto text-white space-y-8 py-6">
+                <div className=" -mt-20 max-w-3xl space-y-6">
                   {/* Floating Micro Label */}
-                  <div className="inline-flex items-center gap-1.5 bg-brand-orange text-black text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10">
+                  <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10">
                     <Sparkles size={11} />
                     UAE's Premier Branding Coordinator
                   </div>
 
-                  <h1 className="font-headline text-3.5xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight leading-tight">
+                  <h1 className="-mt-3 font-headline text-3.5xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight leading-tight">
                     Transforming Spaces with Premium Signage &amp; Graphics
                   </h1>
                   <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl">
@@ -78,7 +78,7 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row gap-4 max-w-md pt-2">
                   <button
                     onClick={() => handleQuoteRedirect()}
-                    className="bg-brand-orange text-black hover:text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:bg-brand-rust transition-all active:scale-95 duration-200 cursor-pointer"
+                    className="bg-brand-orange text-white hover:bg-brand-rust font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg transition-all active:scale-95 duration-200 cursor-pointer"
                   >
                     Request a Quote
                   </button>

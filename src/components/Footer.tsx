@@ -1,6 +1,6 @@
 import { Globe, Mail, MapPin } from 'lucide-react';
 import { ActiveTab } from '../types';
-import logoImg from '../../assets/logo.jpeg';
+import logoImg from '../../assets/logo-2.jpeg';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;
@@ -19,10 +19,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
         {/* Brand Column */}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
-            <img src={logoImg} alt="Pro Graphics Logo" className="h-10 w-auto rounded object-contain border border-brand-light-gray shadow-sm bg-white" />
-            <span className="font-headline text-2xl font-bold tracking-tight text-brand-primary">
-              Pro <span className="text-brand-orange">Graphics</span>
-            </span>
+            <img src={logoImg} alt="Pro Graphics Logo" className="h-16 w-auto rounded object-contain border border-brand-light-gray shadow-sm bg-white" />
           </div>
           <p className="font-sans text-sm text-brand-gray leading-relaxed max-w-xs">
             Premium architectural branding, signage configurations, and buildings maintenance solutions engineered for visionary UAE enterprises.

@@ -1,7 +1,7 @@
 import { Menu, X } from 'lucide-react';
 import { ActiveTab } from '../types';
 import { useState, useEffect } from 'react';
-import logoImg from '../../assets/logo.jpeg';
+import logoImg from '../../assets/logo-2.jpeg';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -50,10 +50,7 @@ export default function Header({ activeTab, setActiveTab, onRequestQuote }: Head
             onClick={() => handleNavClick('home')}
             className="flex items-center gap-2.5 transition-colors duration-300 cursor-pointer text-brand-primary"
           >
-            <img src={logoImg} alt="Pro Graphics Logo" className="h-9 w-auto rounded object-contain border border-brand-light-gray shadow-sm" />
-            <span className="font-serif text-2xl font-semibold tracking-tight">
-              Pro <span className="text-brand-orange font-headline text-sm font-bold uppercase tracking-wider select-none bg-brand-orange/10 px-2 py-1 rounded border border-brand-orange/20">Graphics</span>
-            </span>
+            <img src={logoImg} alt="Pro Graphics Logo" className="h-14 w-auto rounded object-contain border border-brand-light-gray shadow-sm" />
           </button>
 
           {/* Desktop Navigation */}
@@ -117,8 +114,7 @@ export default function Header({ activeTab, setActiveTab, onRequestQuote }: Head
         <div className="space-y-8">
           <div className="flex justify-between items-center border-b border-brand-light-gray pb-5">
             <div className="flex items-center gap-2">
-              <img src={logoImg} alt="Pro Graphics Logo" className="h-8 w-auto rounded object-contain border border-brand-light-gray/80" />
-              <span className="font-headline text-xl font-bold text-brand-primary">Pro Graphics</span>
+              <img src={logoImg} alt="Pro Graphics Logo" className="h-12 w-auto rounded object-contain border border-brand-light-gray/80" />
             </div>
             <button
               onClick={() => setMobileMenuOpen(false)}

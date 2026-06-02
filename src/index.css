@@ -24,7 +24,7 @@
 
 /* Custom interactive classes for Pro Graphics Sophisticated Light look and feel */
 .hero-gradient {
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(15, 23, 42, 0.4) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0) 100%);
 }
 
 .floating-input:focus ~ .floating-label,
