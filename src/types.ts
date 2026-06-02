@@ -17,6 +17,7 @@ export interface ServiceItem {
   description: string;
   bulletPoints: string[];
   iconName: 'Building' | 'Signpost' | 'Zap' | 'Maximize2' | 'Compass' | 'Truck';
+  image?: string;
 }
 
 export interface SectorItem {

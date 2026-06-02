@@ -16,7 +16,7 @@ export default function SectorsOfWork() {
   };
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-[#0A0A0A]">
+    <section className="py-20 px-6 md:px-12 bg-brand-dark">
       <div className="max-w-7xl mx-auto space-y-16">
         {/* Title Context Slat */}
         <div className="text-center max-w-xl mx-auto">
@@ -36,18 +36,18 @@ export default function SectorsOfWork() {
                 key={sector.id}
                 className={`flex flex-col ${
                   isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                } gap-12 items-center pb-12 border-b border-white/5 last:border-0 last:pb-0`}
+                } gap-12 items-center pb-12 border-b border-brand-light-gray last:border-0 last:pb-0`}
               >
                 {/* Visual Image Slat */}
                 <div className="w-full lg:w-1/2">
-                  <div className="relative h-[340px] rounded-xl overflow-hidden shadow-lg border border-white/5">
+                  <div className="relative h-[340px] rounded-xl overflow-hidden shadow-lg border border-brand-light-gray">
                     <img
-                      alt={sector.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      src={sector.image}
+                       alt={sector.title}
+                       referrerPolicy="no-referrer"
+                       className="w-full h-full object-cover transition-transform duration-505 hover:scale-105"
+                       src={sector.image}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                   </div>
                 </div>
 
@@ -55,7 +55,7 @@ export default function SectorsOfWork() {
                 <div className="w-full lg:w-1/2 space-y-6">
                   {/* Title card Icon */}
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#0D0D0D] rounded-lg flex items-center justify-center border border-white/5 shadow-sm">
+                    <div className="w-10 h-10 bg-brand-surface rounded-lg flex items-center justify-center border border-brand-light-gray shadow-sm">
                       {renderSectorIcon(sector.highlightIcon)}
                     </div>
                     <h3 className="font-headline text-xl md:text-2xl font-bold text-brand-primary">
@@ -70,22 +70,22 @@ export default function SectorsOfWork() {
                   {/* Challenge-Solution Grid */}
                   <div className="grid gap-4 pt-2">
                     {/* Challenge Block */}
-                    <div className="bg-rose-950/15 border border-rose-900/35 p-4 rounded-xl flex gap-3">
+                    <div className="bg-rose-950/15 border border-rose-900/30 p-4 rounded-xl flex gap-3">
                       <ShieldAlert size={20} className="text-rose-400 shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-[11px] font-bold text-rose-400 uppercase tracking-wider font-headline">Sector Dilemma / Rules:</span>
-                        <p className="font-sans text-xs text-rose-200/90 mt-1 leading-relaxed">
+                        <span className="text-[11px] font-bold text-rose-300 uppercase tracking-wider font-headline">Sector Dilemma / Rules:</span>
+                        <p className="font-sans text-xs text-rose-200 mt-1 leading-relaxed">
                           {sector.challenge}
                         </p>
                       </div>
                     </div>
 
                     {/* Solution Block */}
-                    <div className="bg-emerald-950/15 border border-emerald-900/35 p-4 rounded-xl flex gap-3">
+                    <div className="bg-emerald-950/15 border border-emerald-900/30 p-4 rounded-xl flex gap-3">
                       <CheckCircle size={20} className="text-emerald-400 shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider font-headline">Engineered Signature Solution:</span>
-                        <p className="font-sans text-xs text-emerald-200/90 mt-1 leading-relaxed">
+                        <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider font-headline">Engineered Signature Solution:</span>
+                        <p className="font-sans text-xs text-emerald-200 mt-1 leading-relaxed">
                           {sector.solution}
                         </p>
                       </div>

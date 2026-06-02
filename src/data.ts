@@ -1,5 +1,24 @@
 import { Project, ServiceItem, SectorItem } from './types';
 
+// Import local service images
+import serviceIndoor from '../assets/service-indoor.jpeg';
+import serviceOutdoor from '../assets/service-outdoor.jpeg';
+import serviceLed from '../assets/service-led.jpeg';
+import service3dLetters from '../assets/service-3d-letters.jpeg';
+import serviceWayfinding from '../assets/service-wayfinding.jpeg';
+import serviceVehicle from '../assets/service-vehicle.jpeg';
+
+// Import local project images
+import projectAldar from '../assets/project-aldar.jpeg';
+import projectGalleria from '../assets/project-galleria.jpeg';
+import projectCleveland from '../assets/project-cleveland.jpeg';
+import projectYas from '../assets/project-yas.jpeg';
+import projectUaeu from '../assets/project-uaeu.jpeg';
+
+// Import local sector images
+import sectorCorporate from '../assets/sector-corporate.jpeg';
+import sectorRetail from '../assets/sector-retail.jpeg';
+
 export const STATIC_SERVICES: ServiceItem[] = [
   {
     id: 'indoor',
@@ -11,7 +30,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Safety, ADA & Regulatory plaques',
       'Custom acrylic & metallic dimensional plates'
     ],
-    iconName: 'Building'
+    iconName: 'Building',
+    image: serviceIndoor
   },
   {
     id: 'outdoor',
@@ -23,7 +43,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Architectural Roof branding',
       'Engineered metal backboards & frames'
     ],
-    iconName: 'Signpost'
+    iconName: 'Signpost',
+    image: serviceOutdoor
   },
   {
     id: 'led',
@@ -35,7 +56,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Abu Dhabi Municipality standards compliant',
       'Zero-emission low-voltage energy profiles'
     ],
-    iconName: 'Zap'
+    iconName: 'Zap',
+    image: serviceLed
   },
   {
     id: '3d-letters',
@@ -47,7 +69,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Surgical precision stud mount designs',
       'Internal neon-effect high-efficiency lamps'
     ],
-    iconName: 'Maximize2'
+    iconName: 'Maximize2',
+    image: service3dLetters
   },
   {
     id: 'wayfinding',
@@ -59,7 +82,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Compliant bilingual typography (Arabic & English)',
       'Underground parking color routing codes'
     ],
-    iconName: 'Compass'
+    iconName: 'Compass',
+    image: serviceWayfinding
   },
   {
     id: 'vehicle',
@@ -71,7 +95,8 @@ export const STATIC_SERVICES: ServiceItem[] = [
       'Symmetric alignment over complex vehicle curves',
       'Adopts RTA regulatory guidelines perfectly'
     ],
-    iconName: 'Truck'
+    iconName: 'Truck',
+    image: serviceVehicle
   }
 ];
 
@@ -82,7 +107,7 @@ export const STATIC_PROJECTS: Project[] = [
     category: 'corporate',
     sector: 'Corporate Real Estate',
     location: 'Al Raha, Abu Dhabi',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDl58bJa2rM2tYVnx9OzaD9w4aRL_f-7-4GTKoUje1LpdMhaWo5iMXOox3vUN6YjbJ857l9sMdXTPXbQejSGuMR8cp06e3S8c9ZzwAtA2vmwxWLbknkW1it6sueKMNI8zUsZIj_Pqw1uvYmI-OX8XP2dmqSeDQie_0PlVv_IaQ2mUalWI1c_NkCft3VAqewmpx1-KggXuvgMiYIz_K-PJavoeMdYV04FFoXsyb4lLvxtgpJA0OxO8KPUrrbUwIJsoMNJ2Uw4wqtlh8',
+    image: projectAldar,
     description: 'High-end structural entrance directory, external architectural facade branding, and dynamic elevator core signages.',
     specifications: '316L Marine Stainless Steel • Integrated Halo LEDs • Structural Glass Panels'
   },
@@ -92,7 +117,7 @@ export const STATIC_PROJECTS: Project[] = [
     category: 'retail',
     sector: 'High-End Retail & Leisure',
     location: 'Al Maryah Island, Abu Dhabi',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3LXUeJHPM6UUvPsNXU4iu41GaSc2fPmrif7_-IGSg6dzDzIs4W2Fc93rTQbHeRKplS-YytgCdRsUwp1QQ7o2NzIeWvFWS7KpEXU298psCfDshivOr7qSFJjnBMtuY2GBov-FGI_X63rcPych9tXcc0DdVQpUHVh_lhSBSlBoX2XUpNyhGJXY2Snzjujwp01JlgFepH6qQWkn-2FqlWBrZXIgriw4vweXoL_wrZzxp651qylCS7nL7JIZI0LD9Tj8JS7fldF3nYr0',
+    image: projectGalleria,
     description: 'Master architectural retail wing directories, premium custom tenant lettering in structural white marble, and public wayfinding.',
     specifications: 'Pristine White Volakas Marble • Mirror Gold Metal Filaments • Integrated Diffused LEDs'
   },
@@ -102,7 +127,7 @@ export const STATIC_PROJECTS: Project[] = [
     category: 'hospitality',
     sector: 'Healthcare & Hospitality',
     location: 'Al Maryah Island, Abu Dhabi',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuoi8AOMfmlvVmulhBNptYEYvwwW6qjTwtJPItwIiUkEmW7FzBtr0GLqqLtHRFGeNpfO2hLhMjjHebn6n074HLfFUXiBW9lZ4XOnC9aK38FQeEwWmy-PeBWgzvYr2WRsoQ1uQQN2HtMVUAKKtM5TuZBEPhNrhemv9lelu4sVOjINU0RjsvId2WMQvlw4rRc27nOmw5brSKoRRnLtl0N5JXeKhbz3NcMg3PSGIFPhMHJsNvsfXdwUHmDA3B_Bdc0mTsCoX6VGALFWQ',
+    image: projectCleveland,
     description: 'Anti-microbial modular indoor wayfinding columns and luminous emergency direction headers mapping complex clinical wings.',
     specifications: 'Powder-coated Silver Aluminum • Anti-bacterial Shell • Contrast Laser Cut Graphics'
   },
@@ -112,7 +137,7 @@ export const STATIC_PROJECTS: Project[] = [
     category: 'hospitality',
     sector: 'Premium Leisure & Hospitality',
     location: 'Yas Island, Abu Dhabi',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDl58bJa2rM2tYVnx9OzaD9w4aRL_f-7-4GTKoUje1LpdMhaWo5iMXOox3vUN6YjbJ857l9sMdXTPXbQejSGuMR8cp06e3S8c9ZzwAtA2vmwxWLbknkW1it6sueKMNI8zUsZIj_Pqw1uvYmI-OX8XP2dmqSeDQie_0PlVv_IaQ2mUalWI1c_NkCft3VAqewmpx1-KggXuvgMiYIz_K-PJavoeMdYV04FFoXsyb4lLvxtgpJA0OxO8KPUrrbUwIJsoMNJ2Uw4wqtlh8',
+    image: projectYas,
     description: 'Dynamic electronic LED backlit entrance markers, exclusive presidential ballroom branding, and customized room indicators.',
     specifications: 'Bronze Architectural Frame • Hidden warm light conduits • Laser Embossed Mahogany'
   },
@@ -122,7 +147,7 @@ export const STATIC_PROJECTS: Project[] = [
     category: 'education',
     sector: 'Education & Institutional',
     location: 'Al Ain, Abu Dhabi District',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuoi8AOMfmlvVmulhBNptYEYvwwW6qjTwtJPItwIiUkEmW7FzBtr0GLqqLtHRFGeNpfO2hLhMjjHebn6n074HLfFUXiBW9lZ4XOnC9aK38FQeEwWmy-PeBWgzvYr2WRsoQ1uQQN2HtMVUAKKtM5TuZBEPhNrhemv9lelu4sVOjINU0RjsvId2WMQvlw4rRc27nOmw5brSKoRRnLtl0N5JXeKhbz3NcMg3PSGIFPhMHJsNvsfXdwUHmDA3B_Bdc0mTsCoX6VGALFWQ',
+    image: projectUaeu,
     description: 'External campus monoliths, campus maps pylon systems, block directories, and lecture hall numeric markers.',
     specifications: 'Corrosion-proof Extruded Slat System • Polycarbonate Screen Protectors • Fluorescent Night-Strip'
   }
@@ -136,7 +161,7 @@ export const STATIC_SECTORS: SectorItem[] = [
     challenge: 'Large multi-floor office wings with high traffic require durable, professional fixtures that align exactly with brand visual manuals.',
     solution: 'Engineered modular aluminum slat directory columns, luxury 3D reception metal logos, and satin-finish glass board separators.',
     highlightIcon: 'Building',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDl58bJa2rM2tYVnx9OzaD9w4aRL_f-7-4GTKoUje1LpdMhaWo5iMXOox3vUN6YjbJ857l9sMdXTPXbQejSGuMR8cp06e3S8c9ZzwAtA2vmwxWLbknkW1it6sueKMNI8zUsZIj_Pqw1uvYmI-OX8XP2dmqSeDQie_0PlVv_IaQ2mUalWI1c_NkCft3VAqewmpx1-KggXuvgMiYIz_K-PJavoeMdYV04FFoXsyb4lLvxtgpJA0OxO8KPUrrbUwIJsoMNJ2Uw4wqtlh8'
+    image: sectorCorporate
   },
   {
     id: 'sec-retail',
@@ -145,7 +170,7 @@ export const STATIC_SECTORS: SectorItem[] = [
     challenge: 'Retail spaces demand immediate, breathtaking sensory impact while remaining fully compliant with strict master-developer covenants.',
     solution: 'Fitted mirror-polished gold letters, precision laser-etched edge-mounted lighting panels, and flawless marble integration frameworks.',
     highlightIcon: 'Sparkles',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3LXUeJHPM6UUvPsNXU4iu41GaSc2fPmrif7_-IGSg6dzDzIs4W2Fc93rTQbHeRKplS-YytgCdRsUwp1QQ7o2NzIeWvFWS7KpEXU298psCfDshivOr7qSFJjnBMtuY2GBov-FGI_X63rcPych9tXcc0DdVQpUHVh_lhSBSlBoX2XUpNyhGJXY2Snzjujwp01JlgFepH6qQWkn-2FqlWBrZXIgriw4vweXoL_wrZzxp651qylCS7nL7JIZI0LD9Tj8JS7fldF3nYr0'
+    image: sectorRetail
   },
   {
     id: 'sec-hospitality',
@@ -154,6 +179,6 @@ export const STATIC_SECTORS: SectorItem[] = [
     challenge: 'Complex guest flow requirements need visible but beautifully subtle signage solutions that enhance the structural luxury.',
     solution: 'Handcrafted premium brushed bronze door panels, hidden warm LED cove illumination, and modular parking path indicators.',
     highlightIcon: 'Hotel',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBHS_vlWYH-YXRwsAyHugPlQYqQlgq_g2Qn3yhfxwVN99oLcKSffse9iMA3pjvSO4fvL3o5Fjm71svhlJWF2_l77LMCWE-hTqSCDWgSwKLuUszbB15OgulkXMZSmpKxuMNY2Nk27J3kGbVgTw9UvIs01k_ocXIFAeNjXJyly7A-Kly1d_OgaBf-4qa9oPGRvTpIQcc9YtLVEakCX6-u9OGVc655FAJJ2iNtLO5Wtx6Z_c2c85hZHCzAxudkwAeuXWaQfMt5ohBxWs'
+    image: projectYas
   }
 ];

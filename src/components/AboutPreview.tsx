@@ -1,4 +1,5 @@
 import { Award, Drill, Users, ShieldCheck } from 'lucide-react';
+import aboutPrecisionImg from '../../assets/about-precision.jpeg';
 
 interface AboutPreviewProps {
   onLearnMore: () => void;
@@ -24,7 +25,7 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
   ];
 
   return (
-    <section className="bg-[#0A0A0A] py-20 px-6 md:px-12 border-b border-brand-light-gray/20">
+    <section className="bg-brand-dark py-20 px-6 md:px-12 border-b border-brand-light-gray">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-12 gap-12 items-center">
           {/* Narrative Content Column */}
@@ -59,7 +60,7 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
             <div className="pt-2">
               <button
                 onClick={onLearnMore}
-                className="inline-flex items-center gap-2 bg-transparent border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-black font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-md active:scale-95 transition-all duration-305"
+                className="inline-flex items-center gap-2 bg-transparent border border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-md active:scale-95 transition-all duration-305 cursor-pointer"
               >
                 Explore Specialized Services
               </button>
@@ -73,11 +74,11 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
                 alt="Master craftsman installing high-end dimensional metal lettering"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNXJfBbPWmEvYPBqUyvWn6-VQLXkJ6GqL_8RSAP2TN_H7KeLbvx1D5Mv5m8oKSIIImI_Aan3-uy-yVlV_Iw2QWfyGDZQ8Th6Jxw0Su9bpNCN0eOwJdEc6upQniLat_R53AKvNd6ob8qGrEVLAMuhEdUe6mn01g64rDvUPSb1KxgMcPKD7_qEy_84a-gIkX_vXUZFz8P5qtti8k-xFg5UJINp048RA6q4xOYT9eQ0-apOiArFNmdExZ_OrChsYzc7KAXnA6lOeFSBg"
+                src={aboutPrecisionImg}
               />
               {/* Overlay with subtle shadow depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-6 left-6 right-6 bg-[#0D0D0D]/95 backdrop-blur-md p-4 rounded-lg shadow-lg border border-white/5">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 bg-brand-surface/95 backdrop-blur-md p-4 rounded-lg shadow-lg border border-brand-light-gray/60">
                 <p className="font-headline text-xs font-bold uppercase tracking-wider text-brand-orange">Precision Fitting</p>
                 <p className="font-sans text-xs text-brand-gray mt-1">Abu Dhabi team completing hand-installation of dimensional brushed-metal signage.</p>
               </div>
@@ -86,10 +87,10 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
         </div>
 
         {/* Technical Highlights Row */}
-        <div className="grid md:grid-cols-3 gap-8 mt-20 pt-16 border-t border-brand-light-gray/30">
+        <div className="grid md:grid-cols-3 gap-8 mt-20 pt-16 border-t border-brand-light-gray">
           {highlights.map((hl, i) => (
             <div key={i} className="flex gap-4">
-              <div className="w-12 h-12 shrink-0 bg-brand-surface border border-brand-light-gray/30 flex items-center justify-center rounded-lg shadow-sm">
+              <div className="w-12 h-12 shrink-0 bg-brand-surface border border-brand-light-gray flex items-center justify-center rounded-lg shadow-sm">
                 {hl.icon}
               </div>
               <div className="space-y-1">

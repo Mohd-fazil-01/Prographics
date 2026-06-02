@@ -8,6 +8,7 @@ import PortfolioDisplay from './components/PortfolioDisplay';
 import SectorsOfWork from './components/SectorsOfWork';
 import ContactFormAndMap from './components/ContactFormAndMap';
 import { ArrowRight, Sparkles, Pin } from 'lucide-react';
+import heroBgImg from '../assets/hero-bg.jpeg';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
@@ -32,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white flex flex-col justify-between font-sans selection:bg-brand-orange/35 selection:text-brand-primary">
+    <div className="min-h-screen bg-brand-dark text-brand-primary flex flex-col justify-between font-sans selection:bg-brand-orange/35 selection:text-brand-primary">
       {/* Top Header Navigation Block */}
       <Header
         activeTab={activeTab}
@@ -51,7 +52,7 @@ export default function App() {
                   alt="A high-end corporate lobby showcasing premium dimensional sign installation with crisp morning lights casting sharp patterns"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover transition-transform duration-[8000ms] hover:scale-105"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBHS_vlWYH-YXRwsAyHugPlQYqQlgq_g2Qn3yhfxwVN99oLcKSffse9iMA3pjvSO4fvL3o5Fjm71svhlJWF2_l77LMCWE-hTqSCDWgSwKLuUszbB15OgulkXMZSmpKxuMNY2Nk27J3kGbVgTw9UvIs01k_ocXIFAeNjXJyly7A-Kly1d_OgaBf-4qa9oPGRvTpIQcc9YtLVEakCX6-u9OGVc655FAJJ2iNtLO5Wtx6Z_c2c85hZHCzAxudkwAeuXWaQfMt5ohBxWs"
+                  src={heroBgImg}
                 />
                 <div className="absolute inset-0 hero-gradient" />
               </div>
@@ -77,7 +78,7 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row gap-4 max-w-md pt-2">
                   <button
                     onClick={() => handleQuoteRedirect()}
-                    className="bg-brand-orange text-black hover:text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:bg-brand-rust transition-all active:scale-95 duration-200"
+                    className="bg-brand-orange text-black hover:text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:bg-brand-rust transition-all active:scale-95 duration-200 cursor-pointer"
                   >
                     Request a Quote
                   </button>
@@ -86,7 +87,7 @@ export default function App() {
                       setActiveTab('portfolio');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="bg-transparent border border-white/20 text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-white/10 transition-all active:scale-95 duration-200"
+                    className="bg-transparent border border-white/20 text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-white/10 transition-all active:scale-95 duration-200 cursor-pointer"
                   >
                     View Portfolio
                   </button>
@@ -130,4 +131,3 @@ export default function App() {
     </div>
   );
 }
-

@@ -82,7 +82,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
   ];
 
   return (
-    <div className="space-y-24 bg-[#0A0A0A] py-16">
+    <div className="space-y-24 bg-brand-dark py-16 text-brand-primary">
       {/* Services Grid Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="max-w-2xl mb-12">
@@ -98,11 +98,22 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
           {STATIC_SERVICES.map((item) => (
             <div
               key={item.id}
-              className="bg-[#0D0D0D] border border-white/5 p-8 rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.05)] hover:border-brand-orange/30 hover:shadow-[0_12px_40px_rgba(197,160,89,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-brand-surface border border-brand-light-gray p-8 rounded-xl shadow-md hover:border-brand-orange/30 hover:shadow-[0_12px_40px_rgba(220,38,38,0.06)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
             >
               <div className="space-y-5">
+                {/* Service Work Image */}
+                {item.image && (
+                  <div className="w-full h-44 rounded-lg overflow-hidden border border-brand-light-gray bg-brand-dark relative">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+
                 {/* Icon Circle */}
-                <div className="w-12 h-12 bg-[#121212] rounded-lg flex items-center justify-center border border-white/5 transition-transform duration-300 group-hover:scale-110">
+                <div className="w-12 h-12 bg-brand-dark rounded-lg flex items-center justify-center border border-brand-light-gray transition-transform duration-305 group-hover:scale-110">
                   {renderItemIcon(item.iconName)}
                 </div>
 
@@ -116,7 +127,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                 </div>
 
                 {/* Bullets lists */}
-                <ul className="space-y-2.5 pt-2 border-t border-brand-light-gray/30">
+                <ul className="space-y-2.5 pt-2 border-t border-brand-light-gray">
                   {item.bulletPoints.map((bp, index) => (
                     <li key={index} className="flex items-start gap-2 text-xs text-brand-gray">
                       <CheckCircle2 size={14} className="text-brand-orange mt-0.5 shrink-0" />
@@ -133,7 +144,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                     const prefilled = `Hello! I want to request custom information and surveyor scheduling regarding "${item.title}". Please send catalog details.`;
                     onSelectorClick('contact', prefilled);
                   }}
-                  className="font-headline text-xs font-bold uppercase tracking-wider text-brand-rust hover:text-brand-orange flex items-center gap-1.5 transition-colors"
+                  className="font-headline text-xs font-bold uppercase tracking-wider text-brand-rust hover:text-brand-orange flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   Request Technical Blueprint <ChevronRight size={14} />
                 </button>
@@ -144,7 +155,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
       </section>
 
       {/* Our Workflow Process */}
-      <section className="bg-[#0D0D0D] py-20 border-y border-white/5">
+      <section className="bg-brand-surface py-20 border-y border-brand-light-gray">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="text-center max-w-xl mx-auto mb-16">
             <p className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">How We Collaborate</p>
@@ -153,11 +164,11 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
-            <div className="hidden md:block absolute top-[40px] left-[3%] w-[94%] h-[1px] bg-white/10 -z-1" />
+            <div className="hidden md:block absolute top-[40px] left-[3%] w-[94%] h-[1px] bg-brand-light-gray -z-1" />
 
             {steps.map((st) => (
-              <div key={st.num} className="bg-brand-surface/40 p-6 rounded-xl border border-brand-light-gray shadow-sm hover:shadow-md transition-shadow relative z-10 flex flex-col gap-4 text-center md:text-left">
-                <div className="w-12 h-12 rounded-full bg-brand-orange text-black flex items-center justify-center font-headline text-lg font-extrabold shadow-md shrink-0 border border-brand-orange mx-auto md:mx-0">
+              <div key={st.num} className="bg-brand-dark p-6 rounded-xl border border-brand-light-gray shadow-md hover:shadow-lg transition-shadow relative z-10 flex flex-col gap-4 text-center md:text-left">
+                <div className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-headline text-lg font-extrabold shadow-md shrink-0 border border-brand-orange mx-auto md:mx-0">
                   {st.num}
                 </div>
                 <div className="space-y-1">
@@ -172,19 +183,19 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
 
       {/* Interactive Quotation Calculator & Spec Builder Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="bg-[#121212] text-white rounded-2xl overflow-hidden shadow-2xl border border-white/5">
+        <div className="bg-brand-surface rounded-2xl overflow-hidden shadow-2xl border border-brand-light-gray">
           <div className="grid lg:grid-cols-12">
             {/* Input Form Fields (Left Tab Panel) */}
             <div className="lg:col-span-7 p-8 md:p-12 space-y-8">
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-1.5 bg-slate-800 border border-slate-700 px-3 py-1 rounded text-xs font-bold text-brand-orange tracking-wide uppercase">
+                <div className="inline-flex items-center gap-1.5 bg-brand-dark border border-brand-light-gray px-3 py-1 rounded text-xs font-bold text-brand-orange tracking-wide uppercase">
                   <Calculator size={14} />
                   Dynamic Estimation Desk
                 </div>
-                <h3 className="font-headline text-2xl md:text-3xl font-extrabold tracking-tight">
+                <h3 className="font-headline text-2xl md:text-3xl font-extrabold tracking-tight text-brand-primary">
                   Signage Budget Calculator
                 </h3>
-                <p className="text-zinc-400 font-sans text-xs">
+                <p className="text-brand-gray font-sans text-xs">
                   Estimate raw project costs in municipal currency and bundle custom options instantly before briefing our technicians.
                 </p>
               </div>
@@ -193,16 +204,16 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
               <div className="space-y-6">
                 {/* Signage Type */}
                 <div className="space-y-2">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-brand-gray">
                     1. Select Signage Specification
                   </label>
                   <select
                     value={calcService}
                     onChange={(e) => setCalcService(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg py-3 px-4 text-white text-sm focus:outline-none focus:border-brand-orange cursor-pointer"
+                    className="w-full bg-brand-dark border border-brand-light-gray rounded-lg py-3 px-4 text-brand-primary text-sm focus:outline-none focus:border-brand-orange cursor-pointer"
                   >
                     {STATIC_SERVICES.map(s => (
-                      <option key={s.id} value={s.id}>{s.title}</option>
+                      <option key={s.id} value={s.id} className="bg-brand-surface text-brand-primary">{s.title}</option>
                     ))}
                   </select>
                 </div>
@@ -210,7 +221,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                 {/* Dimensions Grid */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-gray">
                       Width (Meters)
                     </label>
                     <input
@@ -220,11 +231,11 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                       step="0.5"
                       value={calcWidth}
                       onChange={(e) => setCalcWidth(parseFloat(e.target.value) || 1)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg py-3 px-4 text-white text-sm focus:outline-none focus:border-brand-orange"
+                      className="w-full bg-brand-dark border border-brand-light-gray rounded-lg py-3 px-4 text-brand-primary text-sm focus:outline-none focus:border-brand-orange"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-gray">
                       Height (Meters)
                     </label>
                     <input
@@ -234,22 +245,22 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                       step="0.5"
                       value={calcHeight}
                       onChange={(e) => setCalcHeight(parseFloat(e.target.value) || 1)}
-                      className="w-full bg-slate-900 border border-slate-700 rounded-lg py-3 px-4 text-white text-sm focus:outline-none focus:border-brand-orange"
+                      className="w-full bg-brand-dark border border-brand-light-gray rounded-lg py-3 px-4 text-brand-primary text-sm focus:outline-none focus:border-brand-orange"
                     />
                   </div>
                 </div>
 
                 {/* Combined Specifications Addons */}
                 <div className="space-y-3">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-zinc-300">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-brand-gray">
                     2. Choose Premium Addons &amp; Formats
                   </label>
 
                   <div className="grid gap-3">
-                    <label className="flex items-center justify-between p-4 bg-slate-900 border border-slate-700/50 rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
+                    <label className="flex items-center justify-between p-4 bg-brand-dark border border-brand-light-gray rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold">LED Halo Illumination</span>
-                        <span className="text-[11px] text-zinc-400 font-sans">Low-voltage backlit diffused halo (Adds 250 AED / m²)</span>
+                        <span className="text-sm font-semibold text-brand-primary">LED Halo Illumination</span>
+                        <span className="text-[11px] text-brand-gray font-sans">Low-voltage backlit diffused halo (Adds 250 AED / m²)</span>
                       </div>
                       <input
                         type="checkbox"
@@ -259,10 +270,10 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                       />
                     </label>
 
-                    <label className="flex items-center justify-between p-4 bg-slate-900 border border-slate-700/50 rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
+                    <label className="flex items-center justify-between p-4 bg-brand-dark border border-brand-light-gray rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold">Mirror Gold Metal Alloys</span>
-                        <span className="text-[11px] text-zinc-400 font-sans">Electroplated titanium alloy coat (Adds 350 AED / m²)</span>
+                        <span className="text-sm font-semibold text-brand-primary">Mirror Gold Metal Alloys</span>
+                        <span className="text-[11px] text-brand-gray font-sans">Electroplated titanium alloy coat (Adds 350 AED / m²)</span>
                       </div>
                       <input
                         type="checkbox"
@@ -272,10 +283,10 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                       />
                     </label>
 
-                    <label className="flex items-center justify-between p-4 bg-slate-900 border border-slate-700/50 rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
+                    <label className="flex items-center justify-between p-4 bg-brand-dark border border-brand-light-gray rounded-lg cursor-pointer hover:border-brand-orange transition-colors">
                       <div className="flex flex-col">
-                        <span className="text-sm font-semibold">Gulf-Spec UV Protective Laminate</span>
-                        <span className="text-[11px] text-zinc-400 font-sans">Extended thermal &amp; dust shield film (Adds 125 AED / m²)</span>
+                        <span className="text-sm font-semibold text-brand-primary">Gulf-Spec UV Protective Laminate</span>
+                        <span className="text-[11px] text-brand-gray font-sans">Extended thermal &amp; dust shield film (Adds 125 AED / m²)</span>
                       </div>
                       <input
                         type="checkbox"
@@ -290,34 +301,34 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
             </div>
 
             {/* Live Pricing Summary Block (Right Panel) */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-black p-8 md:p-12 flex flex-col justify-between border-l border-slate-800/80">
+            <div className="lg:col-span-5 bg-gradient-to-br from-brand-surface to-brand-dark p-8 md:p-12 flex flex-col justify-between border-l border-brand-light-gray">
               <div className="space-y-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-orange block">
                   INQUIRY BLUEPRINT PREVIEW
                 </span>
 
-                <div className="space-y-4 border-b border-slate-800 pb-6">
+                <div className="space-y-4 border-b border-brand-light-gray pb-6 text-brand-primary">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-zinc-400">Sign Format:</span>
+                    <span className="text-brand-gray">Sign Format:</span>
                     <span className="font-semibold">{STATIC_SERVICES.find(s => s.id === calcService)?.title}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-zinc-400">Total Dimensions:</span>
+                    <span className="text-brand-gray">Total Dimensions:</span>
                     <span className="font-semibold">{calcWidth}m × {calcHeight}m</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-zinc-400">Surface Area:</span>
+                    <span className="text-brand-gray">Surface Area:</span>
                     <span className="font-semibold">{(calcWidth * calcHeight).toFixed(2)} m²</span>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-xs text-zinc-400 font-sans">ESTIMATED PROJECTION:</span>
+                  <span className="text-xs text-brand-gray font-sans">ESTIMATED PROJECTION:</span>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-headline font-black text-white">AED {calculateEstimate()}</span>
-                    <span className="text-zinc-400 text-sm font-bold">*</span>
+                    <span className="text-4xl font-headline font-black text-brand-primary">AED {calculateEstimate()}</span>
+                    <span className="text-brand-gray text-sm font-bold">*</span>
                   </div>
-                  <p className="text-[11px] text-zinc-400 leading-tight font-sans">
+                  <p className="text-[11px] text-brand-gray leading-tight font-sans">
                     * Estimated raw blueprint price includes material cutting &amp; standard fitting. Subject to Musaffah surveyor evaluation and Abu Dhabi municipality permit checks.
                   </p>
                 </div>
@@ -326,12 +337,12 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
               <div className="pt-8">
                 <button
                   onClick={handleInquiryIntegration}
-                  className="w-full bg-brand-orange text-black font-headline text-xs font-bold uppercase tracking-wider py-4 rounded shadow-lg hover:bg-brand-rust hover:text-white active:scale-95 transition-all duration-200 flex items-center justify-center gap-2"
+                  className="w-full bg-brand-orange text-white font-headline text-xs font-bold uppercase tracking-wider py-4 rounded shadow-lg hover:bg-brand-rust active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   Prefill &amp; Customize Inquiry
                   <ArrowRight size={14} />
                 </button>
-                <span className="block text-[10px] text-zinc-500 text-center mt-3 font-sans">
+                <span className="block text-[10px] text-brand-gray/60 text-center mt-3 font-sans">
                   Instantly populates contact database with technical specifications
                 </span>
               </div>

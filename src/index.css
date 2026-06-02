@@ -6,25 +6,25 @@
   --font-headline: "Montserrat", sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
   
-  --color-brand-primary: #F5F5F5;
-  --color-brand-orange: #C5A059;
-  --color-brand-rust: #A08246;
-  --color-brand-dark: #050505;
-  --color-brand-surface: #0D0D0D;
-  --color-brand-gray: #A1A1AA;
-  --color-brand-light-gray: #222222;
+  --color-brand-primary: #FFFFFF;
+  --color-brand-orange: #DC2626;
+  --color-brand-rust: #B91C1C;
+  --color-brand-dark: #0F172A;
+  --color-brand-surface: #1E293B;
+  --color-brand-gray: #E2E8F0;
+  --color-brand-light-gray: #334155;
 }
 
 @layer base {
   body {
-    background-color: #0A0A0A;
-    color: #E4E4E7;
+    background-color: #0F172A;
+    color: #FFFFFF;
   }
 }
 
-/* Custom interactive classes for Pro Graphics Sophisticated Dark look and feel */
+/* Custom interactive classes for Pro Graphics Sophisticated Light look and feel */
 .hero-gradient {
-  background: linear-gradient(to right, rgba(10, 10, 10, 0.98) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(10, 10, 10, 0.4) 100%);
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.98) 0%, rgba(15, 23, 42, 0.8) 50%, rgba(15, 23, 42, 0.4) 100%);
 }
 
 .floating-input:focus ~ .floating-label,
@@ -36,3 +36,4 @@
 .fader-active {
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
+

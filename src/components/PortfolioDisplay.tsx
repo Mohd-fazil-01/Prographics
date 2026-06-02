@@ -21,7 +21,7 @@ export default function PortfolioDisplay() {
     : STATIC_PROJECTS.filter(p => p.category === activeFilter);
 
   return (
-    <div className="space-y-24 py-16">
+    <div className="space-y-24 bg-brand-dark py-16 text-brand-primary">
       {/* Portfolio Showcase Grid */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-12">
@@ -33,15 +33,15 @@ export default function PortfolioDisplay() {
         </div>
 
         {/* Filter Toolbar */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10 pb-4 border-b border-brand-light-gray/20">
+        <div className="flex flex-wrap justify-center gap-3 mb-10 pb-4 border-b border-brand-light-gray">
           {filterTabs.map(tab => (
             <button
               key={tab.value}
               onClick={() => setActiveFilter(tab.value)}
               className={`px-5 py-2.5 rounded-full font-headline text-xs font-bold uppercase tracking-wider border transition-all duration-200 ${
                 activeFilter === tab.value
-                  ? 'bg-brand-orange text-black border-brand-orange shadow-lg'
-                  : 'bg-[#0D0D0D] text-zinc-300 border-white/5 hover:bg-[#121212] hover:text-white'
+                  ? 'bg-brand-orange text-white border-brand-orange shadow-lg'
+                  : 'bg-brand-surface text-brand-gray border-brand-light-gray hover:bg-brand-dark hover:text-brand-primary cursor-pointer'
               }`}
             >
               {tab.label}
@@ -55,11 +55,11 @@ export default function PortfolioDisplay() {
             <div
               key={proj.id}
               onClick={() => setSelectedProject(proj)}
-              className="group bg-[#0D0D0D] border border-white/5 rounded-xl overflow-hidden shadow-xl hover:border-brand-orange/20 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              className="group bg-brand-surface border border-brand-light-gray rounded-xl overflow-hidden shadow-sm hover:border-brand-orange/40 transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
               <div className="space-y-4">
                 {/* Image Wrap */}
-                <div className="aspect-[4/3] overflow-hidden relative bg-brand-surface">
+                <div className="aspect-[4/3] overflow-hidden relative bg-brand-dark">
                   <img
                     alt={proj.title}
                     referrerPolicy="no-referrer"
@@ -71,7 +71,7 @@ export default function PortfolioDisplay() {
                     {proj.sector}
                   </div>
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="bg-brand-orange text-black w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="bg-brand-orange text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                       <Eye size={20} />
                     </span>
                   </div>
@@ -92,7 +92,7 @@ export default function PortfolioDisplay() {
               </div>
 
               {/* Specification Footer Slat */}
-              <div className="mx-6 mb-6 pt-4 border-t border-white/5 flex justify-between items-center text-[10px] font-medium text-brand-gray">
+              <div className="mx-6 mb-6 pt-4 border-t border-brand-light-gray flex justify-between items-center text-[10px] font-medium text-brand-gray">
                 <span className="font-sans text-[10px]">Specifications Summary</span>
                 <span className="text-[10px] font-bold text-brand-primary text-right truncate max-w-[180px] font-headline">{proj.specifications.split('•')[0]}</span>
               </div>
@@ -102,13 +102,13 @@ export default function PortfolioDisplay() {
       </section>
 
       {/* BEFORE & AFTER INTERACTIVE COMPRESSOR SLIDER */}
-      <section className="bg-brand-surface/40 py-20 border-y border-brand-light-gray/20">
+      <section className="bg-brand-surface py-20 border-y border-brand-light-gray">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* Descriptive Context left panel */}
             <div className="lg:col-span-4 space-y-6">
               <div className="space-y-2">
-                <span className="inline-flex items-center gap-1.5 bg-brand-primary border border-slate-800 text-xs font-bold text-brand-orange uppercase tracking-wide px-3 py-1 rounded-full">
+                <span className="inline-flex items-center gap-1.5 bg-brand-dark border border-brand-light-gray text-xs font-bold text-brand-orange uppercase tracking-wide px-3 py-1 rounded-full">
                   <RefreshCw size={12} className="animate-spin" />
                   Preserving Physical Integrity
                 </span>
@@ -143,7 +143,7 @@ export default function PortfolioDisplay() {
 
             {/* Slider Visual Canvas (Right Panel) */}
             <div className="lg:col-span-8 space-y-4">
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-brand-light-gray select-none bg-brand-primary group">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-brand-light-gray select-none bg-brand-dark group">
                 
                 {/* BEFORE IMAGE (Full Background) */}
                 <img
@@ -208,8 +208,8 @@ export default function PortfolioDisplay() {
       {/* PORTFOLIO DETAILED POPUP OVERLAY */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 z-50 backdrop-blur-md flex items-center justify-center p-6" onClick={() => setSelectedProject(null)}>
-          <div className="bg-[#0D0D0D] rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-white/10 shadow-2xl" onClick={e => e.stopPropagation()}>
-            <div className="aspect-video relative bg-brand-primary">
+          <div className="bg-brand-surface rounded-2xl overflow-hidden max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-brand-light-gray shadow-2xl text-brand-primary" onClick={e => e.stopPropagation()}>
+            <div className="aspect-video relative bg-brand-dark">
               <img
                 alt={selectedProject.title}
                 referrerPolicy="no-referrer"
@@ -218,7 +218,7 @@ export default function PortfolioDisplay() {
               />
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 bg-black/75 hover:bg-brand-orange text-white w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg font-headline font-bold text-lg"
+                className="absolute top-4 right-4 bg-brand-dark hover:bg-brand-surface text-brand-primary hover:text-brand-orange w-10 h-10 rounded-full flex items-center justify-center transition-colors shadow-lg font-headline font-bold text-lg cursor-pointer"
               >
                 ×
               </button>
@@ -226,7 +226,7 @@ export default function PortfolioDisplay() {
             <div className="p-8 space-y-6">
               <div className="space-y-2">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="bg-brand-surface border border-white/5 text-brand-orange px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider font-headline">
+                  <span className="bg-brand-dark border border-brand-light-gray text-brand-orange px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider font-headline">
                     {selectedProject.sector}
                   </span>
                   <span className="bg-brand-orange/10 text-brand-orange px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider font-headline border border-brand-orange/15">
@@ -246,7 +246,7 @@ export default function PortfolioDisplay() {
                   </p>
                 </div>
 
-                <div className="bg-brand-surface p-4 rounded-lg border border-white/5 space-y-2">
+                <div className="bg-brand-dark p-4 rounded-lg border border-brand-light-gray space-y-2">
                   <div className="flex gap-2">
                     <Info size={16} className="text-brand-orange shrink-0 mt-0.5" />
                     <div>
@@ -262,7 +262,7 @@ export default function PortfolioDisplay() {
               <div className="pt-2 flex justify-end">
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="bg-brand-orange text-black font-headline text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-brand-rust hover:text-white transition-all"
+                  className="bg-brand-orange text-white font-headline text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-brand-rust active:scale-95 transition-all cursor-pointer"
                 >
                   Close Showcase
                 </button>
