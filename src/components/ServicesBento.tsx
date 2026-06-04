@@ -87,7 +87,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="max-w-2xl mb-12">
           <p className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">Our Capabilities</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">Our Expertise</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">Signage Installation &amp; Building Maintenance Expertise</h2>
           <p className="font-sans text-brand-gray mt-2 text-base leading-relaxed">
             Precision engineering meets creative marketing vision. We format durable, premium installations designed specifically to emphasize corporate confidence and capture consumer sights across Abu Dhabi district zones.
           </p>
@@ -107,7 +107,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-505 group-hover:scale-105"
                     />
                   </div>
                 )}
@@ -193,7 +193,7 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                   Dynamic Estimation Desk
                 </div>
                 <h3 className="font-headline text-2xl md:text-3xl font-extrabold tracking-tight text-brand-primary">
-                  Signage Budget Calculator
+                  Signage &amp; Branding Cost Calculator
                 </h3>
                 <p className="text-brand-gray font-sans text-xs">
                   Estimate raw project costs in municipal currency and bundle custom options instantly before briefing our technicians.

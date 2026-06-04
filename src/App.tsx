@@ -7,7 +7,8 @@ import ServicesBento from './components/ServicesBento';
 import PortfolioDisplay from './components/PortfolioDisplay';
 import SectorsOfWork from './components/SectorsOfWork';
 import ContactFormAndMap from './components/ContactFormAndMap';
-import { ArrowRight, Sparkles, Pin } from 'lucide-react';
+import SEOManager from './components/SEOManager';
+import { Sparkles, Pin } from 'lucide-react';
 import heroBgImg from '../assets/hero-bg.jpeg';
 
 export default function App() {
@@ -32,8 +33,90 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Dynamic Metadata & Structured Schema Strategy for React Tab Routing
+  const seoConfig = {
+    home: {
+      title: "Pro Graphics Building Maintenance | Premium Signage & Facility Care UAE",
+      description: "Pro Graphics Building Maintenance is UAE's premier coordinator for premium architectural signage, 3D letters signboards, vehicle fleet wraps, and buildings maintenance services.",
+      keywords: "Pro Graphics Building Maintenance, Pro Graphics, Pro Graphics UAE, Building Maintenance UAE, Property Maintenance, Commercial Maintenance, Signage Company Abu Dhabi, Vehicle Branding",
+      path: "",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Pro Graphics Building Maintenance",
+        "url": "https://prographics.onrender.com"
+      }
+    },
+    services: {
+      title: "Signage Installation & Building Maintenance Services | Pro Graphics",
+      description: "Explore our expert branding and maintenance capabilities: indoor & outdoor signage solutions, custom LED boards, 3D letters fabrication, and vehicle wraps.",
+      keywords: "Signage Installation, Signage Solutions, Digital Signage, Indoor Signage, Outdoor Signage, Printing Services, Vehicle Branding, Shop Branding, Corporate Branding",
+      path: "/services",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Signage & Property Maintenance Services",
+        "serviceType": "Signage Installation, Building Maintenance, Fleet Wrapping",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Pro Graphics Building Maintenance"
+        },
+        "areaServed": ["Abu Dhabi", "Dubai", "Sharjah", "UAE"],
+        "description": "Premium commercial building maintenance, wayfinding signage installation, fleet wrap branding, and laser formatting services."
+      }
+    },
+    portfolio: {
+      title: "Branding Showcase & Maintenance Portfolio | Pro Graphics",
+      description: "View our completed signage and building maintenance projects: illuminated neon signs, vehicle fleet wraps, and structural building restoration work in Abu Dhabi.",
+      keywords: "Branding Solutions, Marketing Materials, Graphic Design Services, Wayfinding Signage, Abu Dhabi, Dubai, Signage Company UAE",
+      path: "/portfolio",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Branding & Signage Projects Portfolio",
+        "creator": {
+          "@type": "LocalBusiness",
+          "name": "Pro Graphics Building Maintenance"
+        },
+        "description": "Showcase of premium illuminated signs, vehicle branding, and structural building restoration work in Abu Dhabi."
+      }
+    },
+    sectors: {
+      title: "Corporate, Retail & Hospitality Signage Sectors | Pro Graphics",
+      description: "Custom wayfinding systems and structural maintenance solutions tailored for corporate developers, retail shopping malls, and hospitality suites in Abu Dhabi.",
+      keywords: "Corporate Branding, Retail Developments, Hospitality Suites, Abu Dhabi Operational Focus",
+      path: "/sectors",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Specialized Sector Branding & Signage Solutions",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Pro Graphics Building Maintenance"
+        },
+        "description": "Targeted architectural branding integrations for corporate developers, retail hubs, and hospitality groups."
+      }
+    },
+    contact: {
+      title: "Contact Surveyor | Pro Graphics Building Maintenance Abu Dhabi",
+      description: "Brief our Musaffah industrial hub engineers. Request corporate site signage surveys, maintenance consultations, and official project quotations.",
+      keywords: "Building Maintenance UAE, Signage Company UAE, Marketing Agency UAE, Abu Dhabi HQ Contact",
+      path: "/contact",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "name": "Contact Pro Graphics Building Maintenance",
+        "description": "Request official signage surveys, maintenance consultations, and project quotes in Abu Dhabi.",
+        "url": "https://prographics.onrender.com/contact"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-brand-dark text-brand-primary flex flex-col justify-between font-sans selection:bg-brand-orange/35 selection:text-brand-primary">
+      {/* Dynamic SEO Tag & Schema Injected in Browser Head */}
+      <SEOManager {...seoConfig[activeTab]} />
+
       {/* Top Header Navigation Block */}
       <Header
         activeTab={activeTab}
@@ -67,8 +150,11 @@ export default function App() {
                   </div>
 
                   <h1 className="-mt-3 font-headline text-3.5xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight leading-tight">
-                    Transforming Spaces with Premium Signage &amp; Graphics
+                    Pro Graphics Building Maintenance
                   </h1>
+                  <span className="block font-headline text-xl sm:text-2xl lg:text-3xl font-bold text-brand-orange leading-tight">
+                    Transforming Spaces with Premium Signage &amp; Graphics
+                  </span>
                   <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl">
                     Abu Dhabi's Trusted Partner for Architectural Signage, Wayfinding Systems, Vehicle Fleet Wraps, and Clean Structural Maintenance Services.
                   </p>

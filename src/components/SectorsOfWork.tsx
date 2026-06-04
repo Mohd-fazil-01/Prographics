@@ -21,7 +21,7 @@ export default function SectorsOfWork() {
         {/* Title Context Slat */}
         <div className="text-center max-w-xl mx-auto">
           <p className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">Abu Dhabi Operational Focus</p>
-          <h2 className="font-headline text-3xl md:text-3.5xl font-extrabold text-brand-primary tracking-tight">Sectors of Excellence</h2>
+          <h2 className="font-headline text-3xl md:text-3.5xl font-extrabold text-brand-primary tracking-tight">Signage &amp; Maintenance Sectors of Excellence</h2>
           <p className="font-sans text-xs text-brand-gray mt-1 leading-relaxed">
             Different spaces pose distinct architectural constraints. We collaborate with developers, hoteliers, and government coordinators to deliver standard-defining branding alignments.
           </p>

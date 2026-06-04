@@ -26,7 +26,7 @@ export default function PortfolioDisplay() {
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-12">
           <p className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider mb-2">Our Physical Assets</p>
-          <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">Our Portfolio</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">Signage &amp; Property Maintenance Projects Portfolio</h2>
           <p className="font-sans text-brand-gray mt-2 text-sm">
             Explore premium architectural projects formatting stability, visual prestige, and robust material design across standard-defining Abu Dhabi territories.
           </p>
@@ -55,7 +55,7 @@ export default function PortfolioDisplay() {
             <div
               key={proj.id}
               onClick={() => setSelectedProject(proj)}
-              className="group bg-brand-surface border border-brand-light-gray rounded-xl overflow-hidden shadow-sm hover:border-brand-orange/40 transition-all duration-300 cursor-pointer flex flex-col justify-between"
+              className="group bg-brand-surface border border-brand-light-gray rounded-xl overflow-hidden shadow-sm hover:border-brand-orange/40 transition-all duration-305 cursor-pointer flex flex-col justify-between"
             >
               <div className="space-y-4">
                 {/* Image Wrap */}
@@ -113,7 +113,7 @@ export default function PortfolioDisplay() {
                   Preserving Physical Integrity
                 </span>
                 <h3 className="font-headline text-2.5xl md:text-3.5xl font-extrabold text-brand-primary tracking-tight">
-                  Maintenance &amp; Restoration
+                  Building Maintenance &amp; Sign Board Restoration
                 </h3>
               </div>
               <p className="font-sans text-sm text-brand-gray leading-relaxed">

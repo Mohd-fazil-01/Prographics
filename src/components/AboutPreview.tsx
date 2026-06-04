@@ -36,8 +36,8 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
                 Engineering Visual Excellence
               </div>
               <h2 className="font-headline text-3xl md:text-4.5xl font-extrabold text-brand-primary tracking-tight leading-tight">
-                Architectural Integrity <br />
-                &amp; Master Craftsmanship
+                Architectural Signage <br />
+                &amp; Building Maintenance
               </h2>
             </div>
 
@@ -94,7 +94,7 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
                 {hl.icon}
               </div>
               <div className="space-y-1">
-                <h4 className="font-headline text-sm font-semibold text-brand-primary">{hl.title}</h4>
+                <h3 className="font-headline text-sm font-semibold text-brand-primary">{hl.title}</h3>
                 <p className="font-sans text-sm text-brand-gray leading-relaxed">{hl.desc}</p>
               </div>
             </div>
