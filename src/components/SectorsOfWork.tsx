@@ -70,22 +70,22 @@ export default function SectorsOfWork() {
                   {/* Challenge-Solution Grid */}
                   <div className="grid gap-4 pt-2">
                     {/* Challenge Block */}
-                    <div className="bg-rose-950/15 border border-rose-900/30 p-4 rounded-xl flex gap-3">
-                      <ShieldAlert size={20} className="text-rose-400 shrink-0 mt-0.5" />
+                    <div className="bg-rose-50 border border-rose-200 p-4 rounded-xl flex gap-3">
+                      <ShieldAlert size={20} className="text-rose-600 shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-[11px] font-bold text-rose-300 uppercase tracking-wider font-headline">Sector Dilemma / Rules:</span>
-                        <p className="font-sans text-xs text-rose-200 mt-1 leading-relaxed">
+                        <span className="text-[11px] font-bold text-rose-700 uppercase tracking-wider font-headline">Sector Dilemma / Rules:</span>
+                        <p className="font-sans text-xs text-rose-800 mt-1 leading-relaxed">
                           {sector.challenge}
                         </p>
                       </div>
                     </div>
 
                     {/* Solution Block */}
-                    <div className="bg-emerald-950/15 border border-emerald-900/30 p-4 rounded-xl flex gap-3">
-                      <CheckCircle size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+                    <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl flex gap-3">
+                      <CheckCircle size={20} className="text-emerald-600 shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-[11px] font-bold text-emerald-300 uppercase tracking-wider font-headline">Engineered Signature Solution:</span>
-                        <p className="font-sans text-xs text-emerald-200 mt-1 leading-relaxed">
+                        <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider font-headline">Engineered Signature Solution:</span>
+                        <p className="font-sans text-xs text-emerald-800 mt-1 leading-relaxed">
                           {sector.solution}
                         </p>
                       </div>

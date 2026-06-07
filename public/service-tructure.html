@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Graphics Building Maintenance</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0d1b2a;
+  --navy2:#111f30;
+  --red:#e02020;
+  --red2:#c01818;
+  --white:#ffffff;
+  --light:#f5f5f5;
+  --gray:#8a9bb0;
+  --border:rgba(255,255,255,0.08);
+}
+body{font-family:'Open Sans',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;}
+
+/* NAV */
+nav{background:var(--navy2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:999;}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:0;height:68px;padding:0 24px;}
+.logo{display:flex;align-items:center;gap:12px;margin-right:auto;}
+.logo-box{width:46px;height:46px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:#fff;text-align:center;line-height:1.2;}
+.logo-text{font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;color:#fff;line-height:1.2;}
+.logo-text span{display:block;font-size:11px;font-weight:300;color:var(--gray);}
+.nav-links{display:flex;align-items:center;gap:0;}
+.nav-item{position:relative;}
+.nav-link{display:block;padding:0 18px;height:68px;line-height:68px;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;font-weight:500;color:var(--gray);cursor:pointer;transition:color .2s;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap;}
+.nav-link:hover,.nav-link.active{color:#fff;border-bottom-color:var(--red);}
+.nav-link.active{color:#fff;}
+.dropdown{position:absolute;top:68px;left:0;background:#0a1520;border:1px solid var(--border);border-top:2px solid var(--red);min-width:260px;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all .2s;z-index:1000;border-radius:0 0 8px 8px;}
+.nav-item:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.drop-item{display:flex;align-items:center;gap:10px;padding:12px 20px;color:var(--gray);font-size:13px;cursor:pointer;transition:all .2s;border-bottom:1px solid var(--border);}
+.drop-item:last-child{border-bottom:none;}
+.drop-item:hover{background:rgba(224,32,32,0.1);color:#fff;padding-left:28px;}
+.drop-dot{width:6px;height:6px;background:var(--red);border-radius:50%;flex-shrink:0;}
+.cta-btn{margin-left:20px;background:var(--red);color:#fff;padding:10px 22px;border:none;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;font-weight:600;cursor:pointer;border-radius:4px;transition:background .2s;text-transform:uppercase;}
+.cta-btn:hover{background:var(--red2);}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
+
+/* HERO */
+.hero{position:relative;min-height:540px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(135deg,#0d1b2a 0%,#1a2a3a 100%);}
+.hero-bg{position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><rect fill="none" stroke="rgba(224,32,32,0.06)" stroke-width="1" width="60" height="60"/></svg>');opacity:1;}
+.hero-content{position:relative;max-width:1200px;margin:0 auto;padding:80px 24px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(224,32,32,0.15);border:1px solid rgba(224,32,32,0.4);color:var(--red);padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;}
+.hero h1{font-family:'Oswald',sans-serif;font-size:52px;font-weight:700;line-height:1.1;max-width:700px;margin-bottom:16px;}
+.hero h1 span{color:var(--red);}
+.hero-sub{font-size:17px;color:var(--red);font-weight:600;margin-bottom:12px;}
+.hero-desc{font-size:14px;color:var(--gray);max-width:520px;line-height:1.8;margin-bottom:36px;}
+.hero-btns{display:flex;gap:16px;}
+.btn-primary{background:var(--red);color:#fff;padding:14px 30px;border:none;font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;font-weight:600;cursor:pointer;border-radius:4px;transition:all .2s;text-transform:uppercase;}
+.btn-primary:hover{background:var(--red2);transform:translateY(-1px);}
+.btn-outline{background:transparent;color:#fff;padding:14px 30px;border:2px solid rgba(255,255,255,0.3);font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1px;font-weight:600;cursor:pointer;border-radius:4px;transition:all .2s;text-transform:uppercase;}
+.btn-outline:hover{border-color:#fff;}
+
+/* CATEGORIES GRID */
+.section{max-width:1200px;margin:0 auto;padding:60px 24px;}
+.section-title{font-family:'Oswald',sans-serif;font-size:32px;font-weight:700;margin-bottom:8px;}
+.section-title span{color:var(--red);}
+.section-sub{color:var(--gray);font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.cat-card{background:#111f30;border:1px solid var(--border);border-top:3px solid var(--red);border-radius:8px;padding:28px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(224,32,32,0.05),transparent);opacity:0;transition:opacity .3s;}
+.cat-card:hover{transform:translateY(-4px);border-color:rgba(224,32,32,0.5);box-shadow:0 12px 40px rgba(0,0,0,0.4);}
+.cat-card:hover::before{opacity:1;}
+.cat-icon{font-size:32px;margin-bottom:16px;}
+.cat-name{font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;margin-bottom:8px;color:#fff;}
+.cat-desc{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:16px;}
+.cat-count{font-size:12px;color:var(--red);font-weight:600;letter-spacing:1px;}
+.cat-arrow{position:absolute;bottom:24px;right:24px;color:var(--red);font-size:20px;transition:transform .2s;}
+.cat-card:hover .cat-arrow{transform:translateX(4px);}
+
+/* SERVICE PAGE */
+.service-hero{background:linear-gradient(135deg,#0a1520 0%,#111f30 100%);padding:50px 24px;border-bottom:1px solid var(--border);}
+.service-hero-inner{max-width:1200px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--gray);margin-bottom:16px;cursor:pointer;}
+.breadcrumb span{color:var(--red);}
+.service-hero h1{font-family:'Oswald',sans-serif;font-size:42px;font-weight:700;margin-bottom:10px;}
+.service-hero p{font-size:14px;color:var(--gray);max-width:600px;line-height:1.8;}
+.services-list{max-width:1200px;margin:0 auto;padding:50px 24px;}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.svc-card{background:#111f30;border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;transition:all .2s;}
+.svc-card:hover{background:#162233;border-left-color:var(--red);}
+.svc-title{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;color:#fff;}
+.svc-desc{font-size:13px;color:var(--gray);line-height:1.7;}
+.svc-icon{font-size:22px;margin-bottom:10px;}
+
+/* FOOTER */
+footer{background:#080f18;border-top:1px solid var(--border);padding:30px 24px;margin-top:60px;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-logo{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;}
+.footer-logo span{color:var(--red);}
+.footer-text{font-size:12px;color:var(--gray);}
+
+.quote-form{background:#111f30;border:1px solid var(--border);border-radius:8px;padding:36px;max-width:700px;margin:40px auto;}
+.form-title{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;margin-bottom:24px;text-align:center;}
+.form-title span{color:var(--red);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:12px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;}
+.form-group input,.form-group select,.form-group textarea{background:#0a1520;border:1px solid var(--border);color:#fff;padding:12px 14px;border-radius:4px;font-size:14px;font-family:'Open Sans',sans-serif;outline:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--red);}
+.form-group select option{background:#0a1520;}
+.form-group textarea{height:100px;resize:none;}
+.form-submit{width:100%;background:var(--red);color:#fff;padding:15px;border:none;font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:2px;font-weight:600;cursor:pointer;border-radius:4px;margin-top:8px;text-transform:uppercase;transition:background .2s;}
+.form-submit:hover{background:var(--red2);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-box">PRO<br>GFX</div>
+      <div class="logo-text">Pro Graphics<span>Building Maintenance</span></div>
+    </div>
+    <div class="nav-links">
+      <div class="nav-item">
+        <div class="nav-link active" onclick="showPage('home')">Home</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link" onclick="void(0)">Services ▾</div>
+        <div class="dropdown">
+          <div class="drop-item" onclick="showService('signage')"><div class="drop-dot"></div>Signage Solutions</div>
+          <div class="drop-item" onclick="showService('uv')"><div class="drop-dot"></div>UV Printing Signage</div>
+          <div class="drop-item" onclick="showService('safety')"><div class="drop-dot"></div>Safety & Compliance Signs</div>
+          <div class="drop-item" onclick="showService('outdoor')"><div class="drop-dot"></div>Outdoor Signage</div>
+          <div class="drop-item" onclick="showService('wayfinding')"><div class="drop-dot"></div>Wayfinding & Direction Signs</div>
+          <div class="drop-item" onclick="showService('kiosk')"><div class="drop-dot"></div>Kiosk Solutions</div>
+          <div class="drop-item" onclick="showService('branding')"><div class="drop-dot"></div>Branding & Wrapping</div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link" onclick="showPage('portfolio')">Portfolio</div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-link" onclick="showPage('contact')">Contact</div>
+      </div>
+    </div>
+    <button class="cta-btn" onclick="showPage('quote')">Request a Quote</button>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🏆 UAE's Premier Branding Coordinator</div>
+      <h1>Pro Graphics <span>Building</span> Maintenance</h1>
+      <div class="hero-sub">Transforming Spaces with Premium Signage & Graphics</div>
+      <div class="hero-desc">Abu Dhabi's Trusted Partner for Architectural Signage, Wayfinding Systems, Vehicle Fleet Wraps, and Clean Structural Maintenance Services.</div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('quote')">Request a Quote</button>
+        <button class="btn-outline" onclick="showPage('portfolio')">View Portfolio</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Our <span>Service Categories</span></h2>
+    <p class="section-sub">Click any category to explore our complete range of services</p>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="showService('signage')">
+        <div class="cat-icon">🪧</div>
+        <div class="cat-name">Signage Solutions</div>
+        <div class="cat-desc">3D signage, light boxes, LED letters, acrylic signs, aluminum letters — full custom signage manufacturing.</div>
+        <div class="cat-count">12 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('uv')">
+        <div class="cat-icon">🖨️</div>
+        <div class="cat-name">UV Printing Signage</div>
+        <div class="cat-desc">High-quality UV digital printing on any surface — boards, glass, acrylic, metal, and more.</div>
+        <div class="cat-count">6 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('safety')">
+        <div class="cat-icon">🚪</div>
+        <div class="cat-name">Safety & Compliance Signs</div>
+        <div class="cat-desc">Push & pull signs, exit signs, SS signage, building safety — full compliance signage solutions.</div>
+        <div class="cat-count">8 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('outdoor')">
+        <div class="cat-icon">🏙️</div>
+        <div class="cat-name">Outdoor Signage</div>
+        <div class="cat-desc">Large-format outdoor signs, building fascia, pylon signs, and all exterior branding solutions.</div>
+        <div class="cat-count">7 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('wayfinding')">
+        <div class="cat-icon">🗺️</div>
+        <div class="cat-name">Wayfinding & Direction Signs</div>
+        <div class="cat-desc">Directional arrows, speed limit signs, no smoking signs, floor maps, and complete navigation systems.</div>
+        <div class="cat-count">9 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('kiosk')">
+        <div class="cat-icon">📺</div>
+        <div class="cat-name">Kiosk Solutions</div>
+        <div class="cat-desc">Custom-built kiosk units for retail, malls, exhibitions, and corporate environments.</div>
+        <div class="cat-count">5 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+      <div class="cat-card" onclick="showService('branding')">
+        <div class="cat-icon">🎨</div>
+        <div class="cat-name">Branding & Wrapping</div>
+        <div class="cat-desc">Banner branding, vehicle wrapping, sticker branding, and full environmental branding solutions.</div>
+        <div class="cat-count">8 Services</div>
+        <div class="cat-arrow">→</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">PRO <span>GRAPHICS</span> Building Maintenance</div>
+      <div class="footer-text">© 2024 Pro Graphics. Abu Dhabi, UAE. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- SERVICE PAGES -->
+<div id="page-service" class="page">
+  <div class="service-hero">
+    <div class="service-hero-inner">
+      <div class="breadcrumb" onclick="showPage('home')">← Home / <span id="svc-breadcrumb">Services</span></div>
+      <h1 id="svc-title">Service Name</h1>
+      <p id="svc-desc">Description</p>
+    </div>
+  </div>
+  <div class="services-list">
+    <div class="svc-grid" id="svc-grid"></div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">PRO <span>GRAPHICS</span> Building Maintenance</div>
+      <div class="footer-text">© 2024 Pro Graphics. Abu Dhabi, UAE. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- PORTFOLIO -->
+<div id="page-portfolio" class="page">
+  <div class="section">
+    <div class="breadcrumb" onclick="showPage('home')">← Back to Home</div>
+    <h2 class="section-title" style="margin-top:16px;">Our <span>Portfolio</span></h2>
+    <p class="section-sub">Completed projects across UAE — Signage, Branding, Wrapping & More</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 1</div>
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 2</div>
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 3</div>
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 4</div>
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 5</div>
+      <div style="background:#111f30;border:1px solid var(--border);border-radius:8px;height:200px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;">Project Photo 6</div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">PRO <span>GRAPHICS</span> Building Maintenance</div>
+      <div class="footer-text">© 2024 Pro Graphics. Abu Dhabi, UAE. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="section">
+    <div class="breadcrumb" onclick="showPage('home')">← Back to Home</div>
+    <h2 class="section-title" style="margin-top:16px;margin-bottom:8px;">Contact <span>Us</span></h2>
+    <p class="section-sub">Get in touch with our team in Abu Dhabi</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:10px;">
+      <div>
+        <div style="background:#111f30;border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;margin-bottom:16px;">
+          <div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px;">📍 Address</div>
+          <div style="font-size:13px;color:var(--gray);">Abu Dhabi, United Arab Emirates</div>
+        </div>
+        <div style="background:#111f30;border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;margin-bottom:16px;">
+          <div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px;">📞 Phone</div>
+          <div style="font-size:13px;color:var(--gray);">+971 XX XXX XXXX</div>
+        </div>
+        <div style="background:#111f30;border:1px solid var(--border);border-left:3px solid var(--red);border-radius:8px;padding:24px;">
+          <div style="font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px;">✉️ Email</div>
+          <div style="font-size:13px;color:var(--gray);">info@prographics.ae</div>
+        </div>
+      </div>
+      <div class="quote-form" style="margin:0;">
+        <div class="form-title" style="font-size:20px;text-align:left;margin-bottom:20px;">Send a <span>Message</span></div>
+        <div class="form-group" style="margin-bottom:14px;"><label>Your Name</label><input type="text" placeholder="Enter your name"></div>
+        <div class="form-group" style="margin-bottom:14px;"><label>Email Address</label><input type="text" placeholder="your@email.com"></div>
+        <div class="form-group" style="margin-bottom:14px;"><label>Message</label><textarea placeholder="How can we help?"></textarea></div>
+        <button class="form-submit">Send Message</button>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">PRO <span>GRAPHICS</span> Building Maintenance</div>
+      <div class="footer-text">© 2024 Pro Graphics. Abu Dhabi, UAE. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<!-- QUOTE -->
+<div id="page-quote" class="page">
+  <div class="section">
+    <div class="breadcrumb" onclick="showPage('home')">← Back to Home</div>
+    <div class="quote-form">
+      <div class="form-title">Request a <span>Quote</span></div>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+        <div class="form-group"><label>Company</label><input type="text" placeholder="Company name"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Phone</label><input type="text" placeholder="+971 XX XXX XXXX"></div>
+        <div class="form-group"><label>Email</label><input type="text" placeholder="email@example.com"></div>
+      </div>
+      <div class="form-group" style="margin-bottom:16px;">
+        <label>Service Category</label>
+        <select>
+          <option>Select a service category</option>
+          <option>Signage Solutions</option>
+          <option>UV Printing Signage</option>
+          <option>Safety & Compliance Signs</option>
+          <option>Outdoor Signage</option>
+          <option>Wayfinding & Direction Signs</option>
+          <option>Kiosk Solutions</option>
+          <option>Branding & Wrapping</option>
+        </select>
+      </div>
+      <div class="form-group" style="margin-bottom:16px;"><label>Project Details</label><textarea placeholder="Describe your requirements..."></textarea></div>
+      <button class="form-submit">Submit Quote Request</button>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">PRO <span>GRAPHICS</span> Building Maintenance</div>
+      <div class="footer-text">© 2024 Pro Graphics. Abu Dhabi, UAE. All rights reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const serviceData = {
+  signage:{
+    title:"Signage Solutions",
+    breadcrumb:"Signage Solutions",
+    desc:"Complete custom signage manufacturing — from 3D illuminated letters to flat-cut boards. We fabricate all types of indoor and outdoor signage with premium materials and precision installation.",
+    items:[
+      {icon:"🔴",title:"3D Signage",desc:"Three-dimensional raised letters and logos for maximum visual impact. Custom-built to exact dimensions for any surface."},
+      {icon:"💡",title:"3D Light Box",desc:"Illuminated 3D light boxes with internal LED lighting — vibrant visibility day and night, energy-efficient design."},
+      {icon:"🪧",title:"2D Signage Boards",desc:"Flat-format signage boards in all sizes and materials — perfect for storefronts, offices, and directories."},
+      {icon:"✂️",title:"Plotter Cutting Letters",desc:"Precision plotter-cut vinyl letters and shapes for windows, walls, and vehicles. Any font, any color."},
+      {icon:"💡",title:"LED Letters",desc:"Individually illuminated LED channel letters — the gold standard for storefront and building identification signage."},
+      {icon:"🔩",title:"Aluminum Letters",desc:"Durable brushed or coated aluminum fabricated letters — premium look for corporate and architectural applications."},
+      {icon:"✨",title:"SS Letters (Stainless Steel)",desc:"High-gloss or satin-finish stainless steel letters — ideal for luxury brands, hotels, and premium corporate identity."},
+      {icon:"🔷",title:"Acrylic Letters",desc:"Cut and polished acrylic letters in any color or finish — lightweight, durable, and versatile for indoor/outdoor use."},
+      {icon:"🟥",title:"LED Sign Boards",desc:"Full LED illuminated sign boards — static or scrolling — for shops, offices, restaurants, and events."},
+      {icon:"🖊️",title:"Normal Painted Letters",desc:"Hand-painted or spray-painted letters for budget-friendly, custom signage with a crafted finish."},
+      {icon:"🎨",title:"Powder Coated Letters",desc:"Powder-coated metal letters with a tough, weather-resistant finish available in hundreds of RAL colors."},
+      {icon:"🌟",title:"Custom Fabrication",desc:"Bespoke sign fabrication combining multiple materials and techniques — fully customized to your brand guidelines."}
+    ]
+  },
+  uv:{
+    title:"UV Printing Signage",
+    breadcrumb:"UV Printing",
+    desc:"State-of-the-art UV flatbed printing technology that prints directly onto virtually any surface. High-resolution, scratch-resistant, and weather-proof — ideal for retail, exhibitions, and exterior use.",
+    items:[
+      {icon:"🖨️",title:"UV Flatbed Printing",desc:"Direct UV printing on rigid substrates up to 3m wide — acrylic, aluminum, wood, glass, foam board, and more."},
+      {icon:"🪟",title:"Acrylic UV Prints",desc:"Crystal-clear or frosted acrylic panels with UV-cured full-color graphics — perfect for reception areas and retail."},
+      {icon:"🔲",title:"Aluminum Composite Prints",desc:"UV printing on aluminum composite (ACM) panels — lightweight, rigid, and weather-resistant for outdoor fascias."},
+      {icon:"🔳",title:"Foam Board UV Prints",desc:"High-quality UV prints on PVC foam board — lightweight and cost-effective for displays and temporary signage."},
+      {icon:"🌈",title:"Backlit UV Film Prints",desc:"UV-printed translucent films for light boxes and illuminated displays with vibrant color output."},
+      {icon:"🏷️",title:"Custom UV Substrate Printing",desc:"UV printing on unique materials including leather, fabric, canvas, tiles, and specialty surfaces."}
+    ]
+  },
+  safety:{
+    title:"Safety & Compliance Signs",
+    breadcrumb:"Safety Signs",
+    desc:"Mandatory and regulatory signage for buildings — from simple push/pull door signs to full fire safety and evacuation signage systems compliant with UAE civil defense requirements.",
+    items:[
+      {icon:"🚪",title:"Push & Pull Signs",desc:"Standard and custom push/pull door signs in acrylic, SS, or vinyl — clear, professional, and durable."},
+      {icon:"🚪",title:"Exit Signs",desc:"Illuminated and non-illuminated exit signs meeting UAE civil defense and building code requirements."},
+      {icon:"✨",title:"SS Signage",desc:"Stainless steel mandatory compliance signs — door numbers, room labels, floor plates, and corporate directory signs."},
+      {icon:"🔥",title:"Fire Safety Signs",desc:"Fire exit routes, fire extinguisher location signs, fire assembly point boards — complete fire safety signage packages."},
+      {icon:"⚠️",title:"Hazard Warning Signs",desc:"OSHA and ISO-compliant hazard, caution, and warning signs for industrial, commercial, and public buildings."},
+      {icon:"🚭",title:"No Smoking Signs",desc:"Mandatory no-smoking signage for all building zones — standard and custom formats in multiple materials."},
+      {icon:"🏢",title:"Building Floor Plans",desc:"Emergency evacuation floor plans and posted building layout maps — required for all commercial buildings."},
+      {icon:"🔒",title:"Restricted Area Signs",desc:"Authorized personnel only, restricted access, and security area signs in standard and customized formats."}
+    ]
+  },
+  outdoor:{
+    title:"Outdoor Signage",
+    breadcrumb:"Outdoor Signage",
+    desc:"Large-scale outdoor signage solutions built to withstand the UAE climate — from building fascias and pylons to hoardings and roadside displays. All weather-sealed and UV-stable.",
+    items:[
+      {icon:"🏗️",title:"Building Fascia Signs",desc:"Large-format building identification signs mounted on facades — illuminated or non-illuminated, all materials."},
+      {icon:"🗼",title:"Pylon / Totem Signs",desc:"Freestanding pylon and totem poles for car parks, malls, and roadside visibility — single or multi-tenant."},
+      {icon:"📢",title:"Hoarding Boards",desc:"Construction site hoardings, project announcement boards, and large outdoor advertising panels."},
+      {icon:"🔦",title:"Backlit Outdoor Signs",desc:"Outdoor illuminated signs with energy-efficient LED backlighting — maximum visibility night and day."},
+      {icon:"🚗",title:"Roadside Signage",desc:"Roadside advertising boards, display panels, and directional signboards for maximum passing traffic exposure."},
+      {icon:"🏛️",title:"Gate & Entrance Signs",desc:"Monumental entrance signage for residential compounds, commercial parks, and corporate campuses."},
+      {icon:"☀️",title:"Weatherproof Displays",desc:"UV-resistant, waterproof outdoor display systems built for the harsh UAE climate with extended durability."}
+    ]
+  },
+  wayfinding:{
+    title:"Wayfinding & Direction Signs",
+    breadcrumb:"Wayfinding Signs",
+    desc:"Comprehensive wayfinding systems that guide people efficiently through buildings, campuses, and public spaces. From simple directional arrows to full color-coded navigation systems.",
+    items:[
+      {icon:"➡️",title:"Directional Arrow Signs",desc:"Wall-mounted and suspended directional arrow signs — clear typography and color coding for intuitive navigation."},
+      {icon:"🗺️",title:"Site & Building Maps",desc:"Printed and digitally-produced site maps, floor directories, and interactive kiosk maps for large facilities."},
+      {icon:"🚦",title:"Speed Limit Signs",desc:"Internal and external speed limit signs for car parks, warehouses, and private roads — standard and custom formats."},
+      {icon:"🚭",title:"No Smoking / Regulatory Signs",desc:"Complete regulatory signage including no smoking, no entry, no parking — UAE-standard formats and materials."},
+      {icon:"🅿️",title:"Parking Signage",desc:"Parking direction, bay numbering, reserved parking, and car park entry/exit signs — full parking signage systems."},
+      {icon:"🏥",title:"Zone & Floor Identification",desc:"Zone markers, floor level indicators, and department identification signs for hospitals, malls, and offices."},
+      {icon:"🔵",title:"Color-Coded Systems",desc:"Custom color-coded wayfinding systems for large buildings — consistent brand-aligned design throughout."},
+      {icon:"📍",title:"You Are Here Maps",desc:"Illustrated 'You Are Here' location maps for lobbies, lift landings, and public spaces."},
+      {icon:"🛗",title:"Lift & Staircase Signs",desc:"Lift lobby directional signs, staircase identification, and floor-level indicator boards."}
+    ]
+  },
+  kiosk:{
+    title:"Kiosk Solutions",
+    breadcrumb:"Kiosk Solutions",
+    desc:"Custom-designed and fabricated kiosk units for retail, exhibitions, corporate lobbies, and public spaces. Built to your exact specifications with integrated branding and optional digital displays.",
+    items:[
+      {icon:"🏪",title:"Retail Kiosks",desc:"Branded retail kiosks for malls and shopping centers — custom design, fabrication, and branding included."},
+      {icon:"🖥️",title:"Digital Display Kiosks",desc:"Kiosk units with integrated digital screens for interactive directories, product displays, and self-service portals."},
+      {icon:"🎪",title:"Exhibition Kiosks",desc:"Lightweight modular exhibition kiosks and display stands — quick setup and dismantle for events and trade shows."},
+      {icon:"🏢",title:"Reception Information Kiosks",desc:"Corporate reception area kiosks for visitor registration, information display, and brand presence."},
+      {icon:"📋",title:"Wayfinding Kiosks",desc:"Freestanding wayfinding kiosk units with touch screens or printed maps for malls, hospitals, and airports."}
+    ]
+  },
+  branding:{
+    title:"Branding & Wrapping Solutions",
+    breadcrumb:"Branding Solutions",
+    desc:"End-to-end branding solutions — from vehicle fleet wraps and banner stands to full environmental branding and sticker campaigns. We bring your brand to life across every surface.",
+    items:[
+      {icon:"🚌",title:"Vehicle Fleet Wrapping",desc:"Full and partial vehicle wraps for cars, vans, buses, and trucks — vibrant, durable, and precision-fitted."},
+      {icon:"🎌",title:"Banner Branding",desc:"Roller banners, X-banners, hanging banners, and PVC flex banners for events, promotions, and displays."},
+      {icon:"🏢",title:"Environmental Branding",desc:"Full interior and exterior environmental branding — wall graphics, floor graphics, window vinyls, and ceiling drops."},
+      {icon:"🏷️",title:"Sticker Branding Solutions",desc:"Custom die-cut stickers, label stickers, and large-format sticker installations for branding and promotions."},
+      {icon:"🚗",title:"Vehicle Partial Wraps",desc:"Cost-effective partial vehicle wraps covering doors, bonnets, or rear panels — maximum impact, minimum spend."},
+      {icon:"🪟",title:"Window Graphics & Frosting",desc:"Decorative window frosting, one-way vision film, full-color window graphics, and corporate privacy films."},
+      {icon:"📦",title:"Packaging & Label Branding",desc:"Custom branded packaging labels, product stickers, and promotional material printing and finishing."},
+      {icon:"🎨",title:"Wall Murals & Graphics",desc:"Large-format wall murals, printed wallpapers, and hand-painted wall graphics for offices and retail spaces."}
+    ]
+  }
+};
+
+function showPage(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  window.scrollTo(0,0);
+}
+
+function showService(key){
+  const data = serviceData[key];
+  document.getElementById('svc-title').textContent = data.title;
+  document.getElementById('svc-breadcrumb').textContent = data.breadcrumb;
+  document.getElementById('svc-desc').textContent = data.desc;
+  const grid = document.getElementById('svc-grid');
+  grid.innerHTML = data.items.map(item=>`
+    <div class="svc-card">
+      <div class="svc-icon">${item.icon}</div>
+      <div class="svc-title">${item.title}</div>
+      <div class="svc-desc">${item.desc}</div>
+    </div>
+  `).join('');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-service').classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

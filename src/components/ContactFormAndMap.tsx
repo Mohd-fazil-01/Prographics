@@ -1,6 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { MapPin, Mail, Phone, Calendar, ArrowRight, MessageSquare, Check, Trash2, Clock } from 'lucide-react';
 import { Inquiry } from '../types';
+import { STATIC_SERVICE_CATEGORIES } from '../data';
 
 interface ContactFormAndMapProps {
   prefillDescription: string;
@@ -233,8 +234,8 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
           </h3>
 
           {showSuccessBanner && (
-            <div className="bg-emerald-950/15 border border-emerald-900/30 text-emerald-200 p-4 rounded-lg text-xs leading-relaxed mb-6 flex items-start gap-2 fader-active">
-              <Check size={18} className="text-emerald-400 shrink-0 mt-0.5" />
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded-lg text-xs leading-relaxed mb-6 flex items-start gap-2 fader-active">
+              <Check size={18} className="text-emerald-600 shrink-0 mt-0.5" />
               <div>
                 <span className="font-bold block uppercase mb-0.5 tracking-wider font-headline text-[10px]">Inquiry Logged Securely</span>
                 A liaison officer from our Musaffah Production House has been assigned. Your docket layout has been added below. We will reach back via email within 2 business hours.
@@ -293,12 +294,11 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                 onChange={(e) => setServiceSelected(e.target.value)}
                 className="w-full bg-brand-surface border-0 border-b border-brand-light-gray text-brand-primary focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors cursor-pointer"
               >
-                <option value="signage" className="text-brand-primary bg-brand-surface">Indoor Signage Solutions</option>
-                <option value="outdoor" className="text-brand-primary bg-brand-surface">Outdoor Facades</option>
-                <option value="led" className="text-brand-primary bg-brand-surface">LED Sign Boards</option>
-                <option value="3d-letters" className="text-brand-primary bg-brand-surface">3D Letters Signage</option>
-                <option value="wayfinding" className="text-brand-primary bg-brand-surface">Wayfinding Navigation</option>
-                <option value="vehicle" className="text-brand-primary bg-brand-surface">Vehicle Fleet wrap</option>
+                {STATIC_SERVICE_CATEGORIES.map(cat => (
+                  <option key={cat.id} value={cat.id} className="text-brand-primary bg-brand-surface">
+                    {cat.title}
+                  </option>
+                ))}
               </select>
             </div>
 

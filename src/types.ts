@@ -20,6 +20,22 @@ export interface ServiceItem {
   image?: string;
 }
 
+export interface SubServiceItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+export interface ServiceCategory {
+  id: string;
+  title: string;
+  breadcrumb: string;
+  desc: string;
+  icon: string;
+  image?: string;
+  items: SubServiceItem[];
+}
+
 export interface SectorItem {
   id: string;
   title: string;

@@ -10,10 +10,12 @@ import ContactFormAndMap from './components/ContactFormAndMap';
 import SEOManager from './components/SEOManager';
 import { Sparkles, Pin } from 'lucide-react';
 import heroBgImg from '../assets/hero-bg.jpeg';
+import { STATIC_SERVICE_CATEGORIES } from './data';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [prefillDescription, setPrefillDescription] = useState<string>('');
+  const [selectedServiceCategory, setSelectedServiceCategory] = useState<string | null>(null);
 
   // Handles quote request by routing directly to contact
   const handleQuoteRedirect = (serviceDescription?: string) => {
@@ -112,15 +114,45 @@ export default function App() {
     }
   };
 
+  const getSeoConfig = () => {
+    const baseConfig = seoConfig[activeTab];
+    if (activeTab === 'services' && selectedServiceCategory) {
+      const category = STATIC_SERVICE_CATEGORIES.find(c => c.id === selectedServiceCategory);
+      if (category) {
+        return {
+          title: `${category.title} | Pro Graphics Building Maintenance UAE`,
+          description: category.desc,
+          keywords: `${category.title}, ${category.title} UAE, ${category.title} Abu Dhabi, ${category.title} Dubai, Pro Graphics`,
+          path: `/services/${category.id}`,
+          schema: {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": category.title,
+            "serviceType": category.title,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": "Pro Graphics Building Maintenance"
+            },
+            "areaServed": ["Abu Dhabi", "Dubai", "Sharjah", "UAE"],
+            "description": category.desc
+          }
+        };
+      }
+    }
+    return baseConfig;
+  };
+
   return (
     <div className="min-h-screen bg-brand-dark text-brand-primary flex flex-col justify-between font-sans selection:bg-brand-orange/35 selection:text-brand-primary">
       {/* Dynamic SEO Tag & Schema Injected in Browser Head */}
-      <SEOManager {...seoConfig[activeTab]} />
+      <SEOManager {...getSeoConfig()} />
 
       {/* Top Header Navigation Block */}
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        selectedServiceCategory={selectedServiceCategory}
+        setSelectedServiceCategory={setSelectedServiceCategory}
         onRequestQuote={() => handleQuoteRedirect()}
       />
 
@@ -193,7 +225,11 @@ export default function App() {
         )}
 
         {activeTab === 'services' && (
-          <ServicesBento onSelectorClick={handleIntegrationSelection} />
+          <ServicesBento
+            selectedCategory={selectedServiceCategory}
+            setSelectedCategory={setSelectedServiceCategory}
+            onSelectorClick={handleIntegrationSelection}
+          />
         )}
 
         {activeTab === 'portfolio' && (

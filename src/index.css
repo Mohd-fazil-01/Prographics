@@ -6,19 +6,19 @@
   --font-headline: "Montserrat", sans-serif;
   --font-serif: "Playfair Display", Georgia, serif;
   
-  --color-brand-primary: #FFFFFF;
+  --color-brand-primary: #0F172A;
   --color-brand-orange: #DC2626;
   --color-brand-rust: #B91C1C;
-  --color-brand-dark: #0F172A;
-  --color-brand-surface: #1E293B;
-  --color-brand-gray: #E2E8F0;
-  --color-brand-light-gray: #334155;
+  --color-brand-dark: #FFFFFF;
+  --color-brand-surface: #F8FAFC;
+  --color-brand-gray: #475569;
+  --color-brand-light-gray: #E2E8F0;
 }
 
 @layer base {
   body {
-    background-color: #0F172A;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0F172A;
   }
 }
 
