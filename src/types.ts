@@ -34,6 +34,7 @@ export interface ServiceCategory {
   icon: string;
   image?: string;
   items: SubServiceItem[];
+  gallery?: string[];
 }
 
 export interface SectorItem {

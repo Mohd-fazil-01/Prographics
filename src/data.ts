@@ -40,7 +40,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🖊️', title: 'Normal Painted Letters', desc: 'Hand-painted or spray-painted letters for budget-friendly, custom signage with a crafted finish.' },
       { icon: '🎨', title: 'Powder Coated Letters', desc: 'Powder-coated metal letters with a tough, weather-resistant finish available in hundreds of RAL colors.' },
       { icon: '🌟', title: 'Custom Fabrication', desc: 'Bespoke sign fabrication combining multiple materials and techniques — fully customized to your brand guidelines.' }
-    ]
+    ],
+    gallery: [service3dLetters, serviceLed, projectYas]
   },
   {
     id: 'uv',
@@ -56,7 +57,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🔳', title: 'Foam Board UV Prints', desc: 'High-quality UV prints on PVC foam board — lightweight and cost-effective for displays and temporary signage.' },
       { icon: '🌈', title: 'Backlit UV Film Prints', desc: 'UV-printed translucent films for light boxes and illuminated displays with vibrant color output.' },
       { icon: '🏷️', title: 'Custom UV Substrate Printing', desc: 'UV printing on unique materials including leather, fabric, canvas, tiles, and specialty surfaces.' }
-    ]
+    ],
+    gallery: [serviceLed, serviceIndoor, projectCleveland]
   },
   {
     id: 'safety',
@@ -74,7 +76,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🚭', title: 'No Smoking Signs', desc: 'Mandatory no-smoking signage for all building zones — standard and custom formats in multiple materials.' },
       { icon: '🏢', title: 'Building Floor Plans', desc: 'Emergency evacuation floor plans and posted building layout maps — required for all commercial buildings.' },
       { icon: '🔒', title: 'Restricted Area Signs', desc: 'Authorized personnel only, restricted access, and security area signs in standard and customized formats.' }
-    ]
+    ],
+    gallery: [serviceIndoor, projectCleveland, projectUaeu]
   },
   {
     id: 'outdoor',
@@ -91,7 +94,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🚗', title: 'Roadside Signage', desc: 'Roadside advertising boards, display panels, and directional signboards for maximum passing traffic exposure.' },
       { icon: '🏛️', title: 'Gate & Entrance Signs', desc: 'Monumental entrance signage for residential compounds, commercial parks, and corporate campuses.' },
       { icon: '☀️', title: 'Weatherproof Displays', desc: 'UV-resistant, waterproof outdoor display systems built for the harsh UAE climate with extended durability.' }
-    ]
+    ],
+    gallery: [serviceOutdoor, projectAldar, projectYas]
   },
   {
     id: 'wayfinding',
@@ -110,7 +114,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🔵', title: 'Color-Coded Systems', desc: 'Custom color-coded wayfinding systems for large buildings — consistent brand-aligned design throughout.' },
       { icon: '📍', title: 'You Are Here Maps', desc: 'Illustrated \'You Are Here\' location maps for lobbies, lift landings, and public spaces.' },
       { icon: '🛗', title: 'Lift & Staircase Signs', desc: 'Lift lobby directional signs, staircase identification, and floor-level indicator boards.' }
-    ]
+    ],
+    gallery: [serviceWayfinding, projectCleveland, projectUaeu]
   },
   {
     id: 'kiosk',
@@ -125,7 +130,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🎪', title: 'Exhibition Kiosks', desc: 'Lightweight modular exhibition kiosks and display stands — quick setup and dismantle for events and trade shows.' },
       { icon: '🏢', title: 'Reception Information Kiosks', desc: 'Corporate reception area kiosks for visitor registration, information display, and brand presence.' },
       { icon: '📋', title: 'Wayfinding Kiosks', desc: 'Freestanding wayfinding kiosk units with touch screens or printed maps for malls, hospitals, and airports.' }
-    ]
+    ],
+    gallery: [serviceIndoor, projectGalleria, projectYas]
   },
   {
     id: 'branding',
@@ -143,7 +149,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🪟', title: 'Window Graphics & Frosting', desc: 'Decorative window frosting, one-way vision film, full-color window graphics, and corporate privacy films.' },
       { icon: '📦', title: 'Packaging & Label Branding', desc: 'Custom branded packaging labels, product stickers, and promotional material printing and finishing.' },
       { icon: '🎨', title: 'Wall Murals & Graphics', desc: 'Large-format wall murals, printed wallpapers, and hand-painted wall graphics for offices and retail spaces.' }
-    ]
+    ],
+    gallery: [serviceVehicle, projectYas, projectGalleria]
   }
 ];
 

@@ -227,6 +227,43 @@ Estimated Budget Projection: AED ${calculateEstimate()} (Subject to final survey
                 </div>
               ))}
             </div>
+
+            {/* Project Gallery Showcase Section */}
+            {activeCategory.gallery && activeCategory.gallery.length > 0 && (
+              <div className="mt-20 pt-16 border-t border-brand-light-gray/45 space-y-8">
+                <div className="max-w-2xl">
+                  <h3 className="font-headline text-2xl font-extrabold text-brand-primary tracking-tight">
+                    Project Gallery
+                  </h3>
+                  <p className="font-sans text-brand-gray text-sm mt-1 leading-relaxed">
+                    Explore examples of our custom {activeCategory.title} installations and branding solutions completed across the UAE.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {activeCategory.gallery.map((imgUrl, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="group relative overflow-hidden rounded-xl border border-brand-light-gray bg-brand-surface aspect-[4/3] shadow-md hover:border-brand-orange/40 hover:shadow-lg transition-all duration-300"
+                    >
+                      <img
+                        src={imgUrl}
+                        alt={`${activeCategory.title} Showcase ${imgIdx + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-505 group-hover:scale-105"
+                      />
+                      
+                      {/* Hover Overlay Slat */}
+                      <div className="absolute inset-0 bg-brand-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                        <div className="bg-brand-surface/95 backdrop-blur-sm px-4 py-2.5 rounded-lg border border-brand-light-gray/60 shadow-md max-w-[180px]">
+                          <p className="font-headline text-[9px] font-bold text-brand-orange uppercase tracking-widest">Completed Project</p>
+                          <p className="font-sans text-[11px] text-brand-primary mt-0.5 font-semibold leading-none">Abu Dhabi, UAE</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
       </section>
