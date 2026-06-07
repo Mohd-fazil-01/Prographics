@@ -24,6 +24,7 @@ export interface SubServiceItem {
   icon: string;
   title: string;
   desc: string;
+  image?: string;
 }
 
 export interface ServiceCategory {
