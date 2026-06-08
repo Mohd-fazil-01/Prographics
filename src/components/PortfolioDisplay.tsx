@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Eye, X } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Import portfolio images
 import p1 from '../../assets/portfolio images/WhatsApp Image 2026-06-02 at 11.39.34 PM.jpeg';
@@ -32,9 +36,32 @@ const PORTFOLIO_IMAGES = [
 
 export default function PortfolioDisplay() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.scroll-portfolio-card',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.scroll-portfolio-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="space-y-24 bg-brand-dark py-16 text-brand-primary">
+    <div ref={containerRef} className="space-y-24 bg-brand-dark py-16 text-brand-primary overflow-hidden">
       {/* Portfolio Showcase Grid */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="text-center max-w-xl mx-auto mb-12">
@@ -46,12 +73,12 @@ export default function PortfolioDisplay() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 scroll-portfolio-grid">
           {PORTFOLIO_IMAGES.map((imgUrl, index) => (
             <div
               key={index}
               onClick={() => setSelectedImage(imgUrl)}
-              className="group aspect-[4/3] rounded-xl overflow-hidden border border-brand-light-gray bg-brand-surface shadow-sm hover:border-brand-orange/50 transition-all duration-300 cursor-pointer relative"
+              className="group aspect-[4/3] rounded-xl overflow-hidden border border-brand-light-gray bg-brand-surface shadow-sm hover:border-brand-orange/50 transition-all duration-300 cursor-pointer relative scroll-portfolio-card"
             >
               <img
                 src={imgUrl}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ActiveTab } from './types';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,11 +12,75 @@ import AboutDisplay from './components/AboutDisplay';
 import { Sparkles, Pin } from 'lucide-react';
 import heroBgImg from '../assets/portfolio images/hero-bg.jpeg';
 import { STATIC_SERVICE_CATEGORIES } from './data';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [prefillDescription, setPrefillDescription] = useState<string>('');
   const [selectedServiceCategory, setSelectedServiceCategory] = useState<string | null>(null);
+
+  const homeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Refresh ScrollTrigger when activeTab changes to ensure accurate trigger positions
+    ScrollTrigger.refresh();
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (activeTab === 'home') {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.fromTo('.hero-bg',
+          { scale: 1.15, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.6 }
+        );
+
+        tl.fromTo('.hero-badge',
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          '-=1.2'
+        );
+
+        tl.fromTo('.hero-title',
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          '-=0.7'
+        );
+
+        tl.fromTo('.hero-subtitle',
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          '-=0.6'
+        );
+
+        tl.fromTo('.hero-text',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8 },
+          '-=0.5'
+        );
+
+        tl.fromTo('.hero-cta',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 },
+          '-=0.4'
+        );
+
+        tl.fromTo('.hero-pin',
+          { x: 30, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.8 },
+          '-=0.6'
+        );
+      }, homeRef);
+
+      return () => {
+        ctx.revert();
+      };
+    }
+  }, [activeTab]);
 
   // Handles quote request by routing directly to contact
   const handleQuoteRedirect = (serviceDescription?: string) => {
@@ -160,14 +224,14 @@ export default function App() {
       {/* Main Body Routing Router */}
       <main className="flex-grow pt-20">
         {activeTab === 'home' && (
-          <div className="space-y-0">
+          <div ref={homeRef} className="space-y-0">
             {/* High-Impact Hero Slat Banner Section */}
             <section className="relative min-h-[480px] md:min-h-[580px] flex items-start pt-24 md:pt-36 select-none overflow-hidden">
               <div className="absolute inset-0 z-0">
                 <img
                   alt="A high-end corporate lobby showcasing premium dimensional sign installation with crisp morning lights casting sharp patterns"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover transition-transform duration-[8000ms] hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[8000ms] hover:scale-105 hero-bg"
                   src={heroBgImg}
                 />
                 <div className="absolute inset-0 hero-gradient" />
@@ -177,18 +241,18 @@ export default function App() {
               <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto text-white space-y-8 py-6">
                 <div className=" -mt-20 max-w-3xl space-y-6">
                   {/* Floating Micro Label */}
-                  <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10">
+                  <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10 hero-badge">
                     <Sparkles size={11} />
                     UAE's Premier Branding Coordinator
                   </div>
 
-                  <h1 className="-mt-3 font-headline text-3.5xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight leading-tight">
+                  <h1 className="-mt-3 font-headline text-3.5xl sm:text-5xl lg:text-5.5xl font-extrabold tracking-tight leading-tight hero-title">
                     Pro Graphics Building Maintenance
                   </h1>
-                  <span className="block font-headline text-xl sm:text-2xl lg:text-3xl font-bold text-brand-orange leading-tight">
+                  <span className="block font-headline text-xl sm:text-2xl lg:text-3xl font-bold text-brand-orange leading-tight hero-subtitle">
                     Transforming Spaces with Premium Signage &amp; Graphics
                   </span>
-                  <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl">
+                  <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl hero-text">
                     Abu Dhabi's Trusted Partner for Architectural Signage, Wayfinding Systems, Vehicle Fleet Wraps, and Clean Structural Maintenance Services.
                   </p>
                 </div>
@@ -197,7 +261,7 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row gap-4 max-w-md pt-2">
                   <button
                     onClick={() => handleQuoteRedirect()}
-                    className="bg-brand-orange text-white hover:bg-brand-rust font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg transition-all active:scale-95 duration-200 cursor-pointer"
+                    className="bg-brand-orange text-white hover:bg-brand-rust font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full shadow-lg transition-all active:scale-95 duration-200 cursor-pointer hero-cta"
                   >
                     Request a Quote
                   </button>
@@ -206,7 +270,7 @@ export default function App() {
                       setActiveTab('portfolio');
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="bg-transparent border border-white/20 text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-white/10 transition-all active:scale-95 duration-200 cursor-pointer"
+                    className="bg-transparent border border-white/20 text-white font-headline text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full hover:bg-white/10 transition-all active:scale-95 duration-200 cursor-pointer hero-cta"
                   >
                     View Portfolio
                   </button>
@@ -214,7 +278,7 @@ export default function App() {
               </div>
 
               {/* Location Indicator Label Slat */}
-              <div className="absolute bottom-6 right-6 md:right-12 bg-black/85 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg text-white/95 text-[11px] font-sans z-10 flex items-center gap-2 max-w-[280px]">
+              <div className="absolute bottom-6 right-6 md:right-12 bg-black/85 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg text-white/95 text-[11px] font-sans z-10 flex items-center gap-2 max-w-[280px] hero-pin">
                 <Pin size={12} className="text-brand-orange shrink-0" />
                 <span className="truncate">Musaffah Industrial Hub • Abu Dhabi</span>
               </div>

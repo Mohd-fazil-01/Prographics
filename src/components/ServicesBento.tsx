@@ -1,6 +1,11 @@
 import { ChevronRight } from 'lucide-react';
 import { STATIC_SERVICE_CATEGORIES } from '../data';
 import { ActiveTab } from '../types';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ServicesBentoProps {
   selectedCategory: string | null;
@@ -13,7 +18,6 @@ export default function ServicesBento({
   setSelectedCategory,
   onSelectorClick
 }: ServicesBentoProps) {
-
 
   const handleCategorySelect = (id: string | null) => {
     setSelectedCategory(id);
@@ -34,12 +38,54 @@ export default function ServicesBento({
   ];
 
   const activeCategory = STATIC_SERVICE_CATEGORIES.find(c => c.id === selectedCategory);
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Stagger capabilities cards
+      gsap.fromTo('.scroll-cat-card',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.scroll-cat-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // Stagger workflow cards
+      gsap.fromTo('.scroll-step-card',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.scroll-step-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [selectedCategory]);
 
   return (
-    <div className="space-y-24 bg-brand-dark py-16 text-brand-primary">
+    <div ref={containerRef} className="space-y-24 bg-brand-dark py-16 text-brand-primary overflow-hidden">
       {/* Scroll anchor */}
       <div id="services-top" className="scroll-mt-24" />
-
+ 
       {/* Services Grid Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         {!activeCategory ? (
@@ -53,12 +99,12 @@ export default function ServicesBento({
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-cat-grid">
               {STATIC_SERVICE_CATEGORIES.map((cat) => (
                 <div
                   key={cat.id}
                   onClick={() => handleCategorySelect(cat.id)}
-                  className="bg-brand-surface border border-brand-light-gray p-8 rounded-xl shadow-md border-t-4 border-t-brand-orange hover:border-brand-orange/40 hover:shadow-[0_12px_40px_rgba(220,38,38,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                  className="bg-brand-surface border border-brand-light-gray p-8 rounded-xl shadow-md border-t-4 border-t-brand-orange hover:border-brand-orange/40 hover:shadow-[0_12px_40px_rgba(220,38,38,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group cursor-pointer scroll-cat-card"
                 >
                   <div className="space-y-5">
                     {/* Category Image if available */}
@@ -142,13 +188,13 @@ export default function ServicesBento({
             </div>
 
             {/* Sub-services Grid list */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-cat-grid">
               {activeCategory.items
                 .filter((item) => !!item.image)
                 .map((item, index) => (
                   <div
                     key={index}
-                    className="bg-brand-surface border border-brand-light-gray p-6 rounded-xl hover:border-brand-orange/45 hover:shadow-[0_8px_30px_rgba(220,38,38,0.05)] transition-all duration-200 flex flex-col justify-between group"
+                    className="bg-brand-surface border border-brand-light-gray p-6 rounded-xl hover:border-brand-orange/45 hover:shadow-[0_8px_30px_rgba(220,38,38,0.05)] transition-all duration-200 flex flex-col justify-between group scroll-cat-card"
                   >
                     <div className="space-y-4">
                       {/* Sub-service Image Cover */}
@@ -202,11 +248,11 @@ export default function ServicesBento({
             <p className="font-sans text-sm text-brand-gray mt-1">Our certified engineering processes ensure your physical assets represent pure durability.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative scroll-step-grid">
             <div className="hidden md:block absolute top-[40px] left-[3%] w-[94%] h-[1px] bg-brand-light-gray -z-1" />
 
             {steps.map((st) => (
-              <div key={st.num} className="bg-brand-dark p-6 rounded-xl border border-brand-light-gray shadow-md hover:shadow-lg transition-shadow relative z-10 flex flex-col gap-4 text-center md:text-left">
+              <div key={st.num} className="bg-brand-dark p-6 rounded-xl border border-brand-light-gray shadow-md hover:shadow-lg transition-shadow relative z-10 flex flex-col gap-4 text-center md:text-left scroll-step-card">
                 <div className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-headline text-lg font-extrabold shadow-md shrink-0 border border-brand-orange mx-auto md:mx-0">
                   {st.num}
                 </div>
@@ -219,8 +265,6 @@ export default function ServicesBento({
           </div>
         </div>
       </section>
-
-
     </div>
   );
 }

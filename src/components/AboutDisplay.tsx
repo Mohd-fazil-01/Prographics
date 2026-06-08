@@ -2,6 +2,11 @@ import { Target, Eye, ShieldCheck, Gem, Drill, Users, Award, MapPin, Wrench, Che
 import aboutPrecisionImg from '../../assets/portfolio images/about-precision.jpeg';
 import workshopImg from '../../assets/portfolio images/project-aldar.jpeg';
 import teamImg from '../../assets/portfolio images/service-3d-letters.jpeg';
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutDisplay() {
   const values = [
@@ -50,29 +55,188 @@ export default function AboutDisplay() {
     }
   ];
 
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Hero loading animation timeline
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+      tl.fromTo('.about-hero-bg', { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 0.35, duration: 1.5 });
+      tl.fromTo('.about-hero-badge', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=1.0');
+      tl.fromTo('.about-hero-title', { y: 35, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.6');
+      tl.fromTo('.about-hero-text', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.5');
+
+      // 2. Story scroll animations (making text more visible as you scroll)
+      gsap.fromTo('.about-story-text',
+        { y: 30, opacity: 0.2 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-story-text',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      gsap.fromTo('.about-story-metric',
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-story-metric-container',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      gsap.fromTo('.about-story-img',
+        { scale: 0.95, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.0,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.about-story-img',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 3. Pillars & Values scroll animations
+      gsap.fromTo('.about-pillar',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-pillar-container',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      gsap.fromTo('.about-value',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-value-container',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 4. Infrastructure scroll animations
+      gsap.fromTo('.about-infra-img',
+        { scale: 0.95, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.0,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.about-infra-img',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      gsap.fromTo('.about-infra-text',
+        { y: 30, opacity: 0.2 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-infra-text',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 5. Team card scroll animations
+      gsap.fromTo('.about-team-card',
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-team-container',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+
+      // 6. CTA scroll animations
+      gsap.fromTo('.about-cta',
+        { y: 25, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.about-cta',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        }
+      );
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="bg-brand-dark min-h-screen">
+    <div ref={pageRef} className="bg-brand-dark min-h-screen overflow-hidden">
       {/* 1. Hero Slat Section */}
       <section className="relative min-h-[360px] md:min-h-[440px] flex items-center select-none overflow-hidden bg-brand-primary border-b border-brand-light-gray">
         <div className="absolute inset-0 z-0">
           <img
             alt="Pro Graphics Signage Workshop and Architectural Fabrication"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover opacity-35"
+            className="w-full h-full object-cover opacity-35 about-hero-bg"
             src={aboutPrecisionImg}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/95 via-brand-primary/80 to-transparent" />
         </div>
 
         <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto text-white space-y-4 py-12">
-          <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10">
+          <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10 about-hero-badge">
             <Award size={11} />
             Since 2021 in Abu Dhabi
           </div>
-          <h1 className="font-headline text-3.5xl sm:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl">
+          <h1 className="font-headline text-3.5xl sm:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl about-hero-title">
             Engineering Visual Landmarks and Structural Integrity
           </h1>
-          <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl">
+          <p className="font-sans text-sm sm:text-base text-zinc-300 leading-normal max-w-xl about-hero-text">
             Get to know Pro Graphics Buildings Maintenance—our engineering standards, premium materials, and the expert team driving architectural signage across the UAE.
           </p>
         </div>
@@ -81,7 +245,7 @@ export default function AboutDisplay() {
       {/* 2. Brand Story & Metrics */}
       <section className="py-20 px-6 md:px-12 border-b border-brand-light-gray">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
-          <div className="md:col-span-7 space-y-6">
+          <div className="md:col-span-7 space-y-6 about-story-text">
             <div className="space-y-2">
               <span className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider">Our Story</span>
               <h2 className="font-headline text-3xl font-extrabold text-brand-primary tracking-tight">
@@ -96,20 +260,20 @@ export default function AboutDisplay() {
             </p>
 
             {/* Metrics Panel */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
-              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 about-story-metric-container">
+              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center about-story-metric">
                 <div className="font-headline text-3.5xl font-black text-brand-primary">5+</div>
                 <div className="font-headline text-[9px] font-bold text-brand-gray uppercase tracking-widest mt-1">Years Experience</div>
               </div>
-              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center">
+              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center about-story-metric">
                 <div className="font-headline text-3.5xl font-black text-brand-primary">50+</div>
                 <div className="font-headline text-[9px] font-bold text-brand-gray uppercase tracking-widest mt-1">Projects Completed</div>
               </div>
-              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center">
+              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center about-story-metric">
                 <div className="font-headline text-3.5xl font-black text-brand-primary">20+</div>
                 <div className="font-headline text-[9px] font-bold text-brand-gray uppercase tracking-widest mt-1 font-sans">Master Artisans</div>
               </div>
-              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center">
+              <div className="bg-brand-surface border border-brand-light-gray p-4 rounded-xl shadow-sm text-center about-story-metric">
                 <div className="font-headline text-3.5xl font-black text-brand-primary">100%</div>
                 <div className="font-headline text-[9px] font-bold text-brand-gray uppercase tracking-widest mt-1">Code Compliant</div>
               </div>
@@ -117,7 +281,7 @@ export default function AboutDisplay() {
           </div>
 
           <div className="md:col-span-5">
-            <div className="relative h-[320px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray">
+            <div className="relative h-[320px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray about-story-img">
               <img
                 alt="Pro Graphics team engineering dimensional signage layout"
                 referrerPolicy="no-referrer"
@@ -138,8 +302,8 @@ export default function AboutDisplay() {
       <section className="py-20 px-6 md:px-12 bg-brand-surface border-b border-brand-light-gray">
         <div className="max-w-7xl mx-auto space-y-12">
           {/* Mission and Vision Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-brand-dark border border-brand-light-gray p-8 rounded-2xl shadow-sm space-y-4">
+          <div className="grid md:grid-cols-2 gap-8 about-pillar-container">
+            <div className="bg-brand-dark border border-brand-light-gray p-8 rounded-2xl shadow-sm space-y-4 about-pillar">
               <div className="w-12 h-12 bg-brand-orange/10 border border-brand-orange/20 rounded-xl flex items-center justify-center text-brand-orange shadow-sm">
                 <Target size={22} />
               </div>
@@ -149,7 +313,7 @@ export default function AboutDisplay() {
               </p>
             </div>
 
-            <div className="bg-brand-dark border border-brand-light-gray p-8 rounded-2xl shadow-sm space-y-4">
+            <div className="bg-brand-dark border border-brand-light-gray p-8 rounded-2xl shadow-sm space-y-4 about-pillar">
               <div className="w-12 h-12 bg-brand-orange/10 border border-brand-orange/20 rounded-xl flex items-center justify-center text-brand-orange shadow-sm">
                 <Eye size={22} />
               </div>
@@ -169,9 +333,9 @@ export default function AboutDisplay() {
               </h3>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 about-value-container">
               {values.map((val, idx) => (
-                <div key={idx} className="bg-brand-dark border border-brand-light-gray p-6 rounded-xl shadow-sm hover:border-brand-orange hover:shadow-md transition-all duration-300 space-y-3">
+                <div key={idx} className="bg-brand-dark border border-brand-light-gray p-6 rounded-xl shadow-sm hover:border-brand-orange hover:shadow-md transition-all duration-305 space-y-3 about-value">
                   <div className="w-10 h-10 bg-brand-surface border border-brand-light-gray rounded-lg flex items-center justify-center shadow-sm">
                     {val.icon}
                   </div>
@@ -188,7 +352,7 @@ export default function AboutDisplay() {
       <section className="py-20 px-6 md:px-12 border-b border-brand-light-gray">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 order-last md:order-first">
-            <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray">
+            <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray about-infra-img">
               <img
                 alt="Pro Graphics warehouse fabrication facilities in Musaffah Abu Dhabi"
                 referrerPolicy="no-referrer"
@@ -203,7 +367,7 @@ export default function AboutDisplay() {
             </div>
           </div>
 
-          <div className="md:col-span-7 space-y-6">
+          <div className="md:col-span-7 space-y-6 about-infra-text">
             <div className="space-y-2">
               <span className="font-headline text-xs font-bold text-brand-orange uppercase tracking-wider">Industrial Strength</span>
               <h3 className="font-headline text-3xl font-extrabold text-brand-primary tracking-tight">
@@ -268,9 +432,9 @@ export default function AboutDisplay() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 about-team-container">
             {teamRoles.map((member, idx) => (
-              <div key={idx} className="bg-brand-dark border border-brand-light-gray p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full">
+              <div key={idx} className="bg-brand-dark border border-brand-light-gray p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between h-full about-team-card">
                 <div className="space-y-4">
                   <div className="w-10 h-10 bg-brand-orange/5 border border-brand-orange/10 rounded-full flex items-center justify-center text-brand-orange">
                     <Users size={18} />
@@ -292,7 +456,7 @@ export default function AboutDisplay() {
       </section>
 
       {/* 6. CTA Block */}
-      <section className="bg-brand-dark py-20 px-6">
+      <section className="bg-brand-dark py-20 px-6 about-cta">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h3 className="font-headline text-3xl md:text-4.5xl font-extrabold text-brand-primary tracking-tight leading-tight">
             Ready to Partner with Our Musaffah Engineers?
