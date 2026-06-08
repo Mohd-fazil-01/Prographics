@@ -1,5 +1,5 @@
 import { Award, Drill, Users, ShieldCheck } from 'lucide-react';
-import aboutPrecisionImg from '../../assets/about-precision.jpeg';
+import aboutPrecisionImg from '../../assets/portfolio images/about-precision.jpeg';
 
 interface AboutPreviewProps {
   onLearnMore: () => void;
@@ -48,11 +48,11 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
             {/* Metrics Blocks */}
             <div className="grid grid-cols-2 gap-6 pt-4">
               <div className="border-l-4 border-brand-orange pl-4 bg-brand-surface/40 p-4 rounded-r-lg">
-                <div className="font-headline text-4xl md:text-5xl font-black text-brand-primary tracking-tight">15+</div>
+                <div className="font-headline text-4xl md:text-5xl font-black text-brand-primary tracking-tight">5+</div>
                 <div className="font-headline text-xs font-bold text-brand-rust uppercase tracking-wider mt-1">Years Experience</div>
               </div>
               <div className="border-l-4 border-brand-orange pl-4 bg-brand-surface/40 p-4 rounded-r-lg">
-                <div className="font-headline text-4xl md:text-5xl font-black text-brand-primary tracking-tight">500+</div>
+                <div className="font-headline text-4xl md:text-5xl font-black text-brand-primary tracking-tight">50+</div>
                 <div className="font-headline text-xs font-bold text-brand-rust uppercase tracking-wider mt-1 font-sans">Projects Completed</div>
               </div>
             </div>

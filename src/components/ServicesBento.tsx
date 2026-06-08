@@ -113,12 +113,6 @@ export default function ServicesBento({
 
             {/* Top Categories Tab Selector Bar */}
             <div className="flex flex-wrap gap-2.5 mb-10 pb-4 border-b border-brand-light-gray/40">
-              <button
-                onClick={() => handleCategorySelect(null)}
-                className="px-4 py-2 rounded-full text-xs font-headline font-bold uppercase tracking-wider border border-brand-light-gray hover:border-brand-orange hover:text-brand-orange transition-all duration-200 cursor-pointer"
-              >
-                All Categories
-              </button>
               {STATIC_SERVICE_CATEGORIES.map((cat) => {
                 const isCurrent = cat.id === selectedCategory;
                 return (

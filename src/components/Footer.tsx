@@ -1,6 +1,6 @@
 import { Globe, Mail, MapPin } from 'lucide-react';
 import { ActiveTab } from '../types';
-import logoImg from '../../assets/logo-2.jpeg';
+import logoImg from '../../assets/logo 4.jpeg';
 
 interface FooterProps {
   setActiveTab: (tab: ActiveTab) => void;

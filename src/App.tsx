@@ -5,11 +5,10 @@ import Footer from './components/Footer';
 import AboutPreview from './components/AboutPreview';
 import ServicesBento from './components/ServicesBento';
 import PortfolioDisplay from './components/PortfolioDisplay';
-import SectorsOfWork from './components/SectorsOfWork';
 import ContactFormAndMap from './components/ContactFormAndMap';
 import SEOManager from './components/SEOManager';
 import { Sparkles, Pin } from 'lucide-react';
-import heroBgImg from '../assets/hero-bg.jpeg';
+import heroBgImg from '../assets/portfolio images/hero-bg.jpeg';
 import { STATIC_SERVICE_CATEGORIES } from './data';
 
 export default function App() {
@@ -83,22 +82,7 @@ export default function App() {
         "description": "Showcase of premium illuminated signs, vehicle branding, and structural building restoration work in Abu Dhabi."
       }
     },
-    sectors: {
-      title: "Corporate, Retail & Hospitality Signage Sectors | Pro Graphics",
-      description: "Custom wayfinding systems and structural maintenance solutions tailored for corporate developers, retail shopping malls, and hospitality suites in Abu Dhabi.",
-      keywords: "Corporate Branding, Retail Developments, Hospitality Suites, Abu Dhabi Operational Focus",
-      path: "/sectors",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "Service",
-        "name": "Specialized Sector Branding & Signage Solutions",
-        "provider": {
-          "@type": "LocalBusiness",
-          "name": "Pro Graphics Building Maintenance"
-        },
-        "description": "Targeted architectural branding integrations for corporate developers, retail hubs, and hospitality groups."
-      }
-    },
+
     contact: {
       title: "Contact Surveyor | Pro Graphics Building Maintenance Abu Dhabi",
       description: "Brief our Musaffah industrial hub engineers. Request corporate site signage surveys, maintenance consultations, and official project quotations.",
@@ -236,9 +220,7 @@ export default function App() {
           <PortfolioDisplay />
         )}
 
-        {activeTab === 'sectors' && (
-          <SectorsOfWork />
-        )}
+
 
         {activeTab === 'contact' && (
           <ContactFormAndMap

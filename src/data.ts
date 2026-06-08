@@ -1,23 +1,23 @@
-import { Project, ServiceItem, SectorItem, ServiceCategory } from './types';
+import { Project, ServiceItem, ServiceCategory } from './types';
 
 // Import local service images
-import serviceIndoor from '../assets/service-indoor.jpeg';
-import serviceOutdoor from '../assets/service-outdoor.jpeg';
-import serviceLed from '../assets/service-led.jpeg';
-import service3dLetters from '../assets/service-3d-letters.jpeg';
-import serviceWayfinding from '../assets/service-wayfinding.jpeg';
-import serviceVehicle from '../assets/service-vehicle.jpeg';
+import serviceIndoor from '../assets/portfolio images/service-indoor.jpeg';
+import serviceOutdoor from '../assets/portfolio images/service-outdoor.jpeg';
+import serviceLed from '../assets/portfolio images/service-led.jpeg';
+import service3dLetters from '../assets/portfolio images/service-3d-letters.jpeg';
+import serviceWayfinding from '../assets/portfolio images/service-wayfinding.jpeg';
+import serviceVehicle from '../assets/portfolio images/service-vehicle.jpeg';
 
 // Import local project images
-import projectAldar from '../assets/project-aldar.jpeg';
-import projectGalleria from '../assets/project-galleria.jpeg';
-import projectCleveland from '../assets/project-cleveland.jpeg';
-import projectYas from '../assets/project-yas.jpeg';
-import projectUaeu from '../assets/project-uaeu.jpeg';
+import projectAldar from '../assets/portfolio images/project-aldar.jpeg';
+import projectGalleria from '../assets/portfolio images/project-galleria.jpeg';
+import projectCleveland from '../assets/portfolio images/project-cleveland.jpeg';
+import projectYas from '../assets/portfolio images/project-yas.jpeg';
+import projectUaeu from '../assets/portfolio images/project-uaeu.jpeg';
 
 // Import local sector images
-import sectorCorporate from '../assets/sector-corporate.jpeg';
-import sectorRetail from '../assets/sector-retail.jpeg';
+import sectorCorporate from '../assets/portfolio images/sector-corporate.jpeg';
+import sectorRetail from '../assets/portfolio images/sector-retail.jpeg';
 
 // Import sub-service images from "pro graphics service image"
 import img3dSignage from '../assets/pro graphics service image/signage 3d.jpg';
@@ -84,7 +84,7 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Signage Solutions',
     desc: 'Complete custom signage manufacturing — from 3D illuminated letters to flat-cut boards. We fabricate all types of indoor and outdoor signage with premium materials and precision installation.',
     icon: '🪧',
-    image: service3dLetters,
+    image: img3dSignage,
     items: [
       { icon: '🔴', title: '3D Signage', desc: 'Three-dimensional raised letters and logos for maximum visual impact. Custom-built to exact dimensions for any surface.', image: img3dSignage },
       { icon: '💡', title: '3D Light Box', desc: 'Illuminated 3D light boxes with internal LED lighting — vibrant visibility day and night, energy-efficient design.', image: img3dLightBox },
@@ -96,9 +96,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
       { icon: '🔷', title: 'Acrylic Letters', desc: 'Cut and polished acrylic letters in any color or finish — lightweight, durable, and versatile for indoor/outdoor use.', image: imgAcrylicLetters },
       { icon: '🟥', title: 'LED Sign Boards', desc: 'Full LED illuminated sign boards — static or scrolling — for shops, offices, restaurants, and events.', image: imgLedSignBoards },
       { icon: '🖊️', title: 'Normal Painted Letters', desc: 'Hand-painted or spray-painted letters for budget-friendly, custom signage with a crafted finish.', image: imgNormalPaintedLetters },
-      { icon: '🎨', title: 'Powder Coated Letters', desc: 'Powder-coated metal letters with a tough, weather-resistant finish available in hundreds of RAL colors.', image: imgPowderCoatedLetters },
-      { icon: '🌟', title: 'Custom Fabrication', desc: 'Bespoke sign fabrication combining multiple materials and techniques — fully customized to your brand guidelines.', image: imgCustomFabrication }
-    ]
+      { icon: '🎨', title: 'Powder Coated Letters', desc: 'Powder-coated metal letters with a tough, weather-resistant finish available in hundreds of RAL colors.', image: imgPowderCoatedLetters }
+     ]
   },
   {
     id: 'uv',
@@ -106,7 +105,7 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'UV Printing',
     desc: 'State-of-the-art UV flatbed printing technology that prints directly onto virtually any surface. High-resolution, scratch-resistant, and weather-proof — ideal for retail, exhibitions, and exterior use.',
     icon: '🖨️',
-    image: serviceLed,
+    image: imgUvFlatbedPrinting,
     items: [
       { icon: '🖨️', title: 'UV Flatbed Printing', desc: 'Direct UV printing on rigid substrates up to 3m wide — acrylic, aluminum, wood, glass, foam board, and more.', image: imgUvFlatbedPrinting },
       { icon: '🪟', title: 'Acrylic UV Prints', desc: 'Crystal-clear or frosted acrylic panels with UV-cured full-color graphics — perfect for reception areas and retail.', image: imgAcrylicUvPrints },
@@ -122,7 +121,7 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Safety Signs',
     desc: 'Mandatory and regulatory signage for buildings — from simple push/pull door signs to full fire safety and evacuation signage systems compliant with UAE civil defense requirements.',
     icon: '🚪',
-    image: serviceIndoor,
+    image: imgFireSafetySigns,
     items: [
       { icon: '🚪', title: 'Push & Pull Signs', desc: 'Standard and custom push/pull door signs in acrylic, SS, or vinyl — clear, professional, and durable.', image: imgPushPullSigns },
       { icon: '🚪', title: 'Exit Signs', desc: 'Illuminated and non-illuminated exit signs meeting UAE civil defense and building code requirements.', image: imgExitSigns },
@@ -140,9 +139,8 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Outdoor Signage',
     desc: 'Large-scale outdoor signage solutions built to withstand the UAE climate — from building fascias and pylons to hoardings and roadside displays. All weather-sealed and UV-stable.',
     icon: '🏙️',
-    image: serviceOutdoor,
+    image: imgPylonTotemSigns,
     items: [
-      { icon: '🏗️', title: 'Building Fascia Signs', desc: 'Large-format building identification signs mounted on facades — illuminated or non-illuminated, all materials.', image: imgBuildingFasciaSigns },
       { icon: '🗼', title: 'Pylon / Totem Signs', desc: 'Freestanding pylon and totem poles for car parks, malls, and roadside visibility — single or multi-tenant.', image: imgPylonTotemSigns },
       { icon: '📢', title: 'Hoarding Boards', desc: 'Construction site hoardings, project announcement boards, and large outdoor advertising panels.', image: imgHoardingBoards },
       { icon: '🔦', title: 'Backlit Outdoor Signs', desc: 'Outdoor illuminated signs with energy-efficient LED backlighting — maximum visibility night and day.', image: imgBacklitOutdoorSigns },
@@ -156,15 +154,13 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Wayfinding Signs',
     desc: 'Comprehensive wayfinding systems that guide people efficiently through buildings, campuses, and public spaces. From simple directional arrows to full color-coded navigation systems.',
     icon: '🗺️',
-    image: serviceWayfinding,
+    image: imgDirectionalArrowSigns,
     items: [
       { icon: '➡️', title: 'Directional Arrow Signs', desc: 'Wall-mounted and suspended directional arrow signs — clear typography and color coding for intuitive navigation.', image: imgDirectionalArrowSigns },
       { icon: '🗺️', title: 'Site & Building Maps', desc: 'Printed and digitally-produced site maps, floor directories, and interactive kiosk maps for large facilities.', image: imgSiteBuildingMaps },
       { icon: '🚦', title: 'Speed Limit Signs', desc: 'Internal and external speed limit signs for car parks, warehouses, and private roads — standard and custom formats.', image: imgSpeedLimitSigns },
       { icon: '🚭', title: 'No Smoking / Regulatory Signs', desc: 'Complete regulatory signage including no smoking, no entry, no parking — UAE-standard formats and materials.', image: imgNoSmokingRegulatorySigns },
       { icon: '🅿️', title: 'Parking Signage', desc: 'Parking direction, bay numbering, reserved parking, and car park entry/exit signs — full parking signage systems.', image: imgParkingSignage },
-      { icon: '🏥', title: 'Zone & Floor Identification', desc: 'Zone markers, floor level indicators, and department identification signs for hospitals, malls, and offices.', image: imgZoneFloorIdentification },
-      { icon: '📍', title: 'You Are Here Maps', desc: 'Illustrated \'You Are Here\' location maps for lobbies, lift landings, and public spaces.', image: imgYouAreHereMaps },
       { icon: '🛗', title: 'Lift & Staircase Signs', desc: 'Lift lobby directional signs, staircase identification, and floor-level indicator boards.', image: imgLiftStaircaseSigns }
     ]
   },
@@ -174,13 +170,11 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Kiosk Solutions',
     desc: 'Custom-designed and fabricated kiosk units for retail, exhibitions, corporate lobbies, and public spaces. Built to your exact specifications with integrated branding and optional digital displays.',
     icon: '📺',
-    image: serviceIndoor,
+    image: imgDigitalDisplayKiosks,
     items: [
-      { icon: '🏪', title: 'Retail Kiosks', desc: 'Branded retail kiosks for malls and shopping centers — custom design, fabrication, and branding included.', image: imgRetailKiosks },
       { icon: '🖥️', title: 'Digital Display Kiosks', desc: 'Kiosk units with integrated digital screens for interactive directories, product displays, and self-service portals.', image: imgDigitalDisplayKiosks },
-      { icon: '🎪', title: 'Exhibition Kiosks', desc: 'Lightweight modular exhibition kiosks and display stands — quick setup and dismantle for events and trade shows.', image: imgExhibitionKiosks },
-      { icon: '🏢', title: 'Reception Information Kiosks', desc: 'Corporate reception area kiosks for visitor registration, information display, and brand presence.', image: imgReceptionInformationKiosks }
-    ]
+      { icon: '🎪', title: 'Exhibition Kiosks', desc: 'Lightweight modular exhibition kiosks and display stands — quick setup and dismantle for events and trade shows.', image: imgExhibitionKiosks }
+     ]
   },
   {
     id: 'branding',
@@ -188,7 +182,7 @@ export const STATIC_SERVICE_CATEGORIES: ServiceCategory[] = [
     breadcrumb: 'Branding Solutions',
     desc: 'End-to-end branding solutions — from vehicle fleet wraps and banner stands to full environmental branding and sticker campaigns. We bring your brand to life across every surface.',
     icon: '🎨',
-    image: serviceVehicle,
+    image: imgVehicleFleetWrapping,
     items: [
       { icon: '🚌', title: 'Vehicle Fleet Wrapping', desc: 'Full and partial vehicle wraps for cars, vans, buses, and trucks — vibrant, durable, and precision-fitted.', image: imgVehicleFleetWrapping },
       { icon: '🏷️', title: 'Sticker Branding Solutions', desc: 'Custom die-cut stickers, label stickers, and large-format sticker installations for branding and promotions.', image: imgStickerBrandingSolutions },
@@ -334,32 +328,4 @@ export const STATIC_PROJECTS: Project[] = [
   }
 ];
 
-export const STATIC_SECTORS: SectorItem[] = [
-  {
-    id: 'sec-corporate',
-    title: 'Corporate Enterprises',
-    description: 'Enhance your workplace atmosphere with prestigious signage configurations that radiate professionalism, clarity, and authority.',
-    challenge: 'Large multi-floor office wings with high traffic require durable, professional fixtures that align exactly with brand visual manuals.',
-    solution: 'Engineered modular aluminum slat directory columns, luxury 3D reception metal logos, and satin-finish glass board separators.',
-    highlightIcon: 'Building',
-    image: sectorCorporate
-  },
-  {
-    id: 'sec-retail',
-    title: 'Luxury Retail Developments',
-    description: 'High-contrast, high-finish storefront installations that convert casual shopping mall footfall into visual brand disciples.',
-    challenge: 'Retail spaces demand immediate, breathtaking sensory impact while remaining fully compliant with strict master-developer covenants.',
-    solution: 'Fitted mirror-polished gold letters, precision laser-etched edge-mounted lighting panels, and flawless marble integration frameworks.',
-    highlightIcon: 'Sparkles',
-    image: sectorRetail
-  },
-  {
-    id: 'sec-hospitality',
-    title: 'Hospitality & Leisure',
-    description: 'Prestige hotel signage that aligns naturally with high-end interior decorations and establishes unmatched elegant spaces.',
-    challenge: 'Complex guest flow requirements need visible but beautifully subtle signage solutions that enhance the structural luxury.',
-    solution: 'Handcrafted premium brushed bronze door panels, hidden warm LED cove illumination, and modular parking path indicators.',
-    highlightIcon: 'Hotel',
-    image: projectYas
-  }
-];
+

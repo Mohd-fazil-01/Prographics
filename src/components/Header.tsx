@@ -1,7 +1,7 @@
 import { Menu, X } from 'lucide-react';
 import { ActiveTab } from '../types';
 import { useState, useEffect } from 'react';
-import logoImg from '../../assets/logo-2.jpeg';
+import logoImg from '../../assets/logo 4.jpeg';
 import { STATIC_SERVICE_CATEGORIES } from '../data';
 
 interface HeaderProps {
@@ -35,7 +35,6 @@ export default function Header({
     { label: 'Home', value: 'home' },
     { label: 'Services', value: 'services' },
     { label: 'Portfolio', value: 'portfolio' },
-    { label: 'Sectors', value: 'sectors' },
     { label: 'Contact', value: 'contact' }
   ];
 

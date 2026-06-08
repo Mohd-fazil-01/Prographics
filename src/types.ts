@@ -1,4 +1,4 @@
-export type ActiveTab = 'home' | 'services' | 'portfolio' | 'sectors' | 'contact';
+export type ActiveTab = 'home' | 'services' | 'portfolio' | 'contact';
 
 export interface Project {
   id: string;
@@ -38,15 +38,7 @@ export interface ServiceCategory {
   gallery?: string[];
 }
 
-export interface SectorItem {
-  id: string;
-  title: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  highlightIcon: string;
-  image: string;
-}
+
 
 export interface Inquiry {
   id: string;
