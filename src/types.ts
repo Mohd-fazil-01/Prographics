@@ -1,4 +1,4 @@
-export type ActiveTab = 'home' | 'services' | 'portfolio' | 'contact';
+export type ActiveTab = 'home' | 'services' | 'portfolio' | 'about' | 'contact';
 
 export interface Project {
   id: string;

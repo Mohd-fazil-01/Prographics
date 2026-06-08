@@ -1,5 +1,5 @@
 import { Award, Drill, Users, ShieldCheck } from 'lucide-react';
-import aboutPrecisionImg from '../../assets/portfolio images/about-precision.jpeg';
+import aboutPrecisionImg from '../../assets/portfolio images/service-3d-letters.jpeg';
 
 interface AboutPreviewProps {
   onLearnMore: () => void;

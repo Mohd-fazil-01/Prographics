@@ -7,6 +7,8 @@ import ServicesBento from './components/ServicesBento';
 import PortfolioDisplay from './components/PortfolioDisplay';
 import ContactFormAndMap from './components/ContactFormAndMap';
 import SEOManager from './components/SEOManager';
+import FloatingActions from './components/FloatingActions';
+import AboutDisplay from './components/AboutDisplay';
 import { Sparkles, Pin } from 'lucide-react';
 import heroBgImg from '../assets/portfolio images/hero-bg.jpeg';
 import { STATIC_SERVICE_CATEGORIES } from './data';
@@ -82,7 +84,22 @@ export default function App() {
         "description": "Showcase of premium illuminated signs, vehicle branding, and structural building restoration work in Abu Dhabi."
       }
     },
-
+    about: {
+      title: "About Us | Pro Graphics Building Maintenance Abu Dhabi",
+      description: "Learn about Pro Graphics' journey in Musaffah, our engineering standards, safety compliance, and the team delivering UAE's premium architectural signage.",
+      keywords: "Pro Graphics Building Maintenance, Signage Company Abu Dhabi, Wayfinding Systems UAE, CNC formatting Musaffah",
+      path: "/about",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About Pro Graphics Building Maintenance",
+        "description": "Premium commercial building maintenance, wayfinding signage installation, fleet wrap branding, and laser formatting services provider.",
+        "publisher": {
+          "@type": "LocalBusiness",
+          "name": "Pro Graphics Building Maintenance"
+        }
+      }
+    },
     contact: {
       title: "Contact Surveyor | Pro Graphics Building Maintenance Abu Dhabi",
       description: "Brief our Musaffah industrial hub engineers. Request corporate site signage surveys, maintenance consultations, and official project quotations.",
@@ -220,7 +237,9 @@ export default function App() {
           <PortfolioDisplay />
         )}
 
-
+        {activeTab === 'about' && (
+          <AboutDisplay />
+        )}
 
         {activeTab === 'contact' && (
           <ContactFormAndMap
@@ -232,6 +251,9 @@ export default function App() {
 
       {/* Global Comprehensive Footer Component */}
       <Footer setActiveTab={setActiveTab} />
+
+      {/* Floating WhatsApp and Chatbot Actions widget */}
+      <FloatingActions />
     </div>
   );
 }

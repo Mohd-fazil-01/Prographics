@@ -75,6 +75,14 @@ export default function Footer({ setActiveTab }: FooterProps) {
           <ul className="flex flex-col gap-3 font-sans text-sm text-brand-gray">
             <li>
               <button
+                onClick={() => handleLinkClick('about')}
+                className="hover:text-brand-orange transition-colors text-left cursor-pointer"
+              >
+                About Us
+              </button>
+            </li>
+            <li>
+              <button
                 onClick={() => handleLinkClick('services')}
                 className="hover:text-brand-orange transition-colors text-left cursor-pointer"
               >

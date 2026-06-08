@@ -35,6 +35,7 @@ export default function Header({
     { label: 'Home', value: 'home' },
     { label: 'Services', value: 'services' },
     { label: 'Portfolio', value: 'portfolio' },
+    { label: 'About', value: 'about' },
     { label: 'Contact', value: 'contact' }
   ];
 
