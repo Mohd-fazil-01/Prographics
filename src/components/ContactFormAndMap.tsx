@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import { MapPin, Mail, Phone, Calendar, ArrowRight, MessageSquare, Check, Trash2, Clock } from 'lucide-react';
 import { Inquiry } from '../types';
-import { STATIC_SERVICE_CATEGORIES } from '../data';
+import emailjs from '@emailjs/browser';
 
 interface ContactFormAndMapProps {
   prefillDescription: string;
@@ -18,6 +18,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
   // Local persistent inquiries list
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [showSuccessBanner, setShowSuccessBanner] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   // Load inquiries on mount
   useEffect(() => {
@@ -49,38 +50,67 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
     e.preventDefault();
     if (!fullName || !emailAddress || !details) return;
 
-    const statuses: Inquiry['status'][] = [
-      'In Review',
-      'Drafting Blueprint',
-      'Project Manager Assigned',
-      'In Production'
-    ];
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 
-    const newInquiry: Inquiry = {
-      id: `inq-${Date.now()}`,
-      fullName,
-      emailAddress,
-      serviceSelected,
-      details,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      status: statuses[Math.floor(Math.random() * 2)] // Mixes Review or Drafting for feedback
+    const resolvedServ = serviceSelected === 'signage' ? 'Indoor Signage Solutions' :
+      serviceSelected === 'outdoor' ? 'Outdoor Facades' :
+      serviceSelected === 'led' ? 'LED Sign Boards' :
+      serviceSelected === '3d-letters' ? '3D Letters Sign' :
+      serviceSelected === 'wayfinding' ? 'Wayfinding Signage' : 'Vehicle wrap';
+
+    const templateParams = {
+      full_name: fullName,
+      email: emailAddress,
+      service_category: resolvedServ,
+      project_details: details,
     };
 
-    const updated = [newInquiry, ...inquiries];
-    setInquiries(updated);
-    localStorage.setItem('pro_graphics_inquiries', JSON.stringify(updated));
+    setIsSending(true);
 
-    // Clear inputs
-    setFullName('');
-    setEmailAddress('');
-    setDetails('');
-    setPrefillDescription('');
-    setShowSuccessBanner(true);
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setIsSending(false);
 
-    // Timeout alert banner
-    setTimeout(() => {
-      setShowSuccessBanner(false);
-    }, 6000);
+        const statuses: Inquiry['status'][] = [
+          'In Review',
+          'Drafting Blueprint',
+          'Project Manager Assigned',
+          'In Production'
+        ];
+
+        const newInquiry: Inquiry = {
+          id: `inq-${Date.now()}`,
+          fullName,
+          emailAddress,
+          serviceSelected,
+          details,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          status: statuses[Math.floor(Math.random() * 2)]
+        };
+
+        const updated = [newInquiry, ...inquiries];
+        setInquiries(updated);
+        localStorage.setItem('pro_graphics_inquiries', JSON.stringify(updated));
+
+        // Clear inputs
+        setFullName('');
+        setEmailAddress('');
+        setDetails('');
+        setPrefillDescription('');
+        setShowSuccessBanner(true);
+
+        setTimeout(() => {
+          setShowSuccessBanner(false);
+        }, 6000);
+      })
+      .catch((err) => {
+        console.error('EmailJS Failed to send message:', err);
+        setIsSending(false);
+        alert('Failed to send the email inquiry. Please try again or contact us directly at prographicsm@gmail.com.');
+      });
   };
 
   // Remove individual Inquiry ticket
@@ -99,12 +129,12 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
     {
       icon: <Mail size={20} className="text-brand-orange" />,
       title: "Email Liaison",
-      text: "prograpcs@gmail.com"
+      text: "prographicsm@gmail.com"
     },
     {
       icon: <Phone size={20} className="text-brand-orange" />,
       title: "Call Direct",
-      text: "+971 2 555 0000"
+      text: "+971 547369746"
     },
     {
       icon: <Calendar size={20} className="text-brand-orange" />,
@@ -114,7 +144,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
   ];
 
   return (
-    <div className="space-y-20 py-16 bg-brand-dark">
+    <div className="space-y-20 py-16 bg-white">
       {/* Introduction Slat */}
       <section className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="max-w-xl">
@@ -131,14 +161,14 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
         {/* Left column details card & tickets inbox */}
         <div className="lg:col-span-5 space-y-8 flex flex-col justify-between">
           <div className="space-y-6">
-            <h3 className="font-headline text-lg font-bold text-brand-primary border-b border-brand-light-gray pb-3">
+            <h3 className="font-headline text-lg font-bold text-brand-primary border-b border-slate-200 pb-3">
               Direct Channels
             </h3>
 
              <div className="grid gap-6">
               {contactOptions.map((opt, idx) => (
                 <div key={idx} className="flex gap-4 group">
-                  <div className="w-12 h-12 p-1.5 rounded-lg bg-brand-surface border border-brand-light-gray flex items-center justify-center shadow-sm group-hover:bg-brand-orange group-hover:text-black group-hover:border-brand-orange transition-all duration-300 animate-none">
+                  <div className="w-12 h-12 p-1.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center shadow-sm group-hover:bg-brand-orange group-hover:text-black group-hover:border-brand-orange transition-all duration-300 animate-none">
                     {opt.icon}
                   </div>
                   <div className="space-y-0.5">
@@ -156,10 +186,10 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
             {/* WhatsApp Accent Trigger Button */}
             <div className="pt-4">
               <a
-                href="https://wa.me/97125550000"
+                href="https://wa.me/919528871265"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25d366]/95 hover:bg-[#25d366] text-white font-headline text-xs font-extrabold uppercase tracking-wider px-8 py-4 rounded-full shadow-md active:scale-95 transition-all"
+                className="inline-flex items-center gap-2 bg-[#25d366]/95 hover:bg-[#25d366] text-white font-headline text-xs font-extrabold uppercase tracking-wider px-8 py-4 rounded-full shadow-md active:scale-95 transition-all cursor-pointer"
               >
                 <MessageSquare size={16} />
                 Chat on WhatsApp
@@ -169,7 +199,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
 
           {/* PERSISTENT LOCAL LIAISON INBOX TICKET VIEW */}
           {inquiries.length > 0 && (
-            <div className="bg-brand-surface border border-brand-light-gray p-6 rounded-xl space-y-4">
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-xl space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-xs font-bold text-brand-primary uppercase tracking-wider font-headline">
                   Submitted Inquiries Tracker
@@ -187,7 +217,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                     inq.serviceSelected === '3d-letters' ? '3D Letters Sign' :
                     inq.serviceSelected === 'wayfinding' ? 'Wayfinding Signage' : 'Vehicle wrap';
                   return (
-                    <div key={inq.id} className="bg-brand-dark p-4 rounded-lg border border-brand-light-gray shadow-sm relative group space-y-2">
+                    <div key={inq.id} className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm relative group space-y-2">
                       <button
                         onClick={() => handleRemoveInquiry(inq.id)}
                         className="absolute right-3 top-3 text-slate-400 hover:text-rose-500 transition-colors cursor-pointer"
@@ -208,7 +238,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                         </p>
                       </div>
 
-                      <div className="flex justify-between items-center pt-1 border-t border-brand-light-gray text-[10px]">
+                      <div className="flex justify-between items-center pt-1 border-t border-slate-100 text-[10px]">
                         <span className="text-slate-400 font-sans flex items-center gap-1">
                           <Clock size={10} /> {inq.timestamp}
                         </span>
@@ -225,11 +255,11 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
         </div>
 
         {/* Right column - professional layout form */}
-        <div className="lg:col-span-7 bg-brand-surface text-brand-primary rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-brand-light-gray">
+        <div className="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden border border-slate-205">
           {/* Subtle accent background blur */}
           <div className="absolute -top-32 -right-32 w-72 h-72 bg-brand-orange/5 rounded-full blur-3xl pointer-events-none" />
 
-          <h3 className="font-headline text-xl font-bold tracking-tight mb-8 text-brand-primary">
+          <h3 className="font-headline text-xl font-bold tracking-tight mb-8 text-slate-900">
             Send a Digital Blueprint
           </h3>
 
@@ -254,11 +284,11 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                   placeholder="Your Full Name"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="floating-input peer w-full bg-transparent border-0 border-b border-brand-light-gray text-brand-primary placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors animate-none"
+                  className="floating-input peer w-full bg-transparent border-0 border-b border-slate-200 text-slate-800 placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors"
                 />
                 <label
                   htmlFor="fullName"
-                  className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-brand-gray text-xs font-medium uppercase tracking-wider"
+                  className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-zinc-500 text-xs font-medium uppercase tracking-wider"
                 >
                   Full Name
                 </label>
@@ -273,11 +303,11 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                   placeholder="Your Email"
                   value={emailAddress}
                   onChange={(e) => setEmailAddress(e.target.value)}
-                  className="floating-input peer w-full bg-transparent border-0 border-b border-brand-light-gray text-brand-primary placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors animate-none"
+                  className="floating-input peer w-full bg-transparent border-0 border-b border-slate-200 text-slate-800 placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors"
                 />
                 <label
                   htmlFor="emailAddress"
-                  className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-brand-gray text-xs font-medium uppercase tracking-wider"
+                  className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-zinc-500 text-xs font-medium uppercase tracking-wider"
                 >
                   Email Address
                 </label>
@@ -286,19 +316,20 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
 
             {/* Service Dropdown */}
             <div className="space-y-1.5">
-              <label className="block text-brand-gray text-[10px] font-bold uppercase tracking-wider font-headline">
+              <label className="block text-zinc-500 text-[10px] font-bold uppercase tracking-wider font-headline">
                 Select Layout Service Category
               </label>
               <select
                 value={serviceSelected}
                 onChange={(e) => setServiceSelected(e.target.value)}
-                className="w-full bg-brand-surface border-0 border-b border-brand-light-gray text-brand-primary focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors cursor-pointer"
+                className="w-full bg-white border-0 border-b border-slate-200 text-slate-800 focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors cursor-pointer"
               >
-                {STATIC_SERVICE_CATEGORIES.map(cat => (
-                  <option key={cat.id} value={cat.id} className="text-brand-primary bg-brand-surface">
-                    {cat.title}
-                  </option>
-                ))}
+                <option value="signage" className="text-slate-850 bg-white">Indoor Signage Solutions</option>
+                <option value="outdoor" className="text-slate-850 bg-white">Outdoor Facades</option>
+                <option value="led" className="text-slate-850 bg-white">LED Sign Boards</option>
+                <option value="3d-letters" className="text-slate-850 bg-white">3D Letters Signage</option>
+                <option value="wayfinding" className="text-slate-850 bg-white">Wayfinding Navigation</option>
+                <option value="vehicle" className="text-slate-850 bg-white">Vehicle Fleet wrap</option>
               </select>
             </div>
 
@@ -311,11 +342,11 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
                 placeholder="Details of your request"
                 value={details}
                 onChange={(e) => setDetails(e.target.value)}
-                className="floating-input peer w-full bg-transparent border-0 border-b border-brand-light-gray text-brand-primary placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors resize-none animate-none"
+                className="floating-input peer w-full bg-transparent border-0 border-b border-slate-200 text-slate-800 placeholder-transparent focus:outline-none focus:ring-0 focus:border-brand-orange pb-2 text-sm transition-colors resize-none"
               />
               <label
                 htmlFor="details"
-                className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-brand-gray text-xs font-medium uppercase tracking-wider"
+                className="floating-label absolute left-0 top-2 cursor-text transition-all duration-300 origin-left text-zinc-500 text-xs font-medium uppercase tracking-wider"
               >
                 Project Details &amp; Requirements
               </label>
@@ -324,10 +355,15 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
             <div className="flex justify-end pt-2">
               <button
                 type="submit"
-                className="w-full md:w-auto bg-brand-orange text-black font-headline text-xs font-bold uppercase tracking-wider px-10 py-4 rounded-full hover:bg-brand-rust hover:text-white transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+                disabled={isSending}
+                className={`w-full md:w-auto font-headline text-xs font-bold uppercase tracking-wider px-10 py-4 rounded-full transition-all duration-300 flex items-center justify-center gap-2 shadow-lg ${
+                  isSending
+                    ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                    : 'bg-brand-orange text-black hover:bg-brand-rust hover:text-white cursor-pointer'
+                }`}
               >
-                Submit Inquiry
-                <ArrowRight size={14} />
+                {isSending ? 'Sending...' : 'Submit Inquiry'}
+                {!isSending && <ArrowRight size={14} />}
               </button>
             </div>
           </form>
@@ -335,9 +371,9 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
       </section>
 
       {/* Dynamic interactive Google Map strip */}
-      <section className="w-full h-[450px] relative border-y border-brand-light-gray overflow-hidden group select-none">
+      <section className="w-full h-[450px] relative border-y border-slate-200 overflow-hidden group select-none">
         {/* Subtle map aesthetic overlay */}
-        <div className="absolute inset-0 z-10 bg-brand-dark/10 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
+        <div className="absolute inset-0 z-10 bg-slate-50/10 pointer-events-none group-hover:bg-transparent transition-colors duration-500" />
         
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58117.844781442116!2d54.45330386762391!3d24.351113220468925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e41300977b311%3A0x6b44747ebc9f61b0!2sMusaffah%20-%20Abu%20Dhabi!5e0!3m2!1sen!2sae!4v1717220000000!5m2!1sen!2sae"
@@ -352,7 +388,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
         />
 
         {/* Map Float Details Overlay Card */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-12 z-20 bg-brand-surface/95 backdrop-blur-md p-6 shadow-2xl border border-brand-light-gray rounded-xl max-w-sm w-[calc(100%-32px)]">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-12 z-20 bg-white/95 backdrop-blur-md p-6 shadow-2xl border border-slate-200 rounded-xl max-w-sm w-[calc(100%-32px)]">
           <p className="font-headline text-[10px] font-bold uppercase tracking-widest text-brand-orange">Manufacturing Facility</p>
           <h4 className="font-headline text-lg font-bold text-brand-primary mt-1 mb-1">Abu Dhabi Facility</h4>
           <p className="font-sans text-xs text-brand-gray leading-relaxed mb-4">

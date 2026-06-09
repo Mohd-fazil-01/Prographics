@@ -231,7 +231,7 @@ export default function AboutDisplay() {
         <div className="relative z-10 w-full px-6 md:px-12 max-w-7xl mx-auto text-white space-y-4 py-12">
           <div className="inline-flex items-center gap-1.5 bg-brand-orange text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full shadow-lg border border-white/10 about-hero-badge">
             <Award size={11} />
-            Since 2021 in Abu Dhabi
+            Since 2026 in Abu Dhabi
           </div>
           <h1 className="font-headline text-3.5xl sm:text-5xl font-extrabold tracking-tight leading-tight max-w-3xl about-hero-title">
             Engineering Visual Landmarks and Structural Integrity
