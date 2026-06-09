@@ -27,12 +27,13 @@ import pHeroBg from '../../assets/portfolio images/hero-bg.jpeg';
 import pSectorCorp from '../../assets/portfolio images/sector-corporate.jpeg';
 import pSectorRetail from '../../assets/portfolio images/sector-retail.jpeg';
 import aldar from '../../assets/portfolio images/aldar.jpeg';
+import icon2 from '../../assets/portfolio images/icon2.jpeg';
 
 
 const PORTFOLIO_IMAGES = [
   p1, p2, p3, p4, p5,
   pAldar, pCleveland, aldar, pUaeu, pYas,
-  p3dLetters, pIndoor, pLed, pOutdoor, pVehicle, pWayfinding,
+  p3dLetters, pIndoor, pLed, pOutdoor, pVehicle, icon2,
   pPrecision, pHeroBg, pSectorCorp, pSectorRetail
 ];
 

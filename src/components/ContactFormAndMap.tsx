@@ -186,7 +186,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
             {/* WhatsApp Accent Trigger Button */}
             <div className="pt-4">
               <a
-                href="https://wa.me/919528871265"
+                href="https://wa.me/+971547369746"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25d366]/95 hover:bg-[#25d366] text-white font-headline text-xs font-extrabold uppercase tracking-wider px-8 py-4 rounded-full shadow-md active:scale-95 transition-all cursor-pointer"
