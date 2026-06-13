@@ -122,8 +122,8 @@ export default function Footer({ setActiveTab }: FooterProps) {
           </div>
           <div className="flex items-center gap-3 font-sans text-sm text-brand-gray">
             <Mail size={16} className="text-brand-orange shrink-0" />
-            <a href="mailto:info@prographics.ae" className="hover:text-brand-orange transition-colors">
-              info@prographics.ae
+            <a href="mailto:info@prographicsbuildings.com" className="hover:text-brand-orange transition-colors">
+              info@prographicsbuildings.com
             </a>
           </div>
         </div>

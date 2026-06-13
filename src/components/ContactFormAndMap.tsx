@@ -109,7 +109,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
       .catch((err) => {
         console.error('EmailJS Failed to send message:', err);
         setIsSending(false);
-        alert('Failed to send the email inquiry. Please try again or contact us directly at prographicsm@gmail.com.');
+        alert('Failed to send the email inquiry. Please try again or contact us directly at info@prographicsbuildings.com.');
       });
   };
 
@@ -129,7 +129,7 @@ export default function ContactFormAndMap({ prefillDescription, setPrefillDescri
     {
       icon: <Mail size={20} className="text-brand-orange" />,
       title: "Email Liaison",
-      text: "prographicsm@gmail.com"
+      text: "info@prographicsbuildings.com"
     },
     {
       icon: <Phone size={20} className="text-brand-orange" />,
