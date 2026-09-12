@@ -103,79 +103,154 @@ export default function App() {
   // Dynamic Metadata & Structured Schema Strategy for React Tab Routing
   const seoConfig = {
     home: {
-      title: "Pro Graphics Building Maintenance | Premium Signage & Facility Care UAE",
-      description: "Pro Graphics Building Maintenance is UAE's premier coordinator for premium architectural signage, 3D letters signboards, vehicle fleet wraps, and buildings maintenance services.",
-      keywords: "Pro Graphics Building Maintenance, Pro Graphics, Pro Graphics UAE, Building Maintenance UAE, Property Maintenance, Commercial Maintenance, Signage Company Abu Dhabi, Vehicle Branding",
-      path: "",
+      title: "Pro Graphics Buildings Maintenance | Signage & Building Maintenance Abu Dhabi",
+      description: "Pro Graphics Buildings Maintenance is Abu Dhabi's trusted signage company. We specialise in architectural signage, 3D letter fabrication, wayfinding systems, vehicle fleet branding, and commercial building maintenance across the UAE.",
+      keywords: "signage company Abu Dhabi, architectural signage Abu Dhabi, building maintenance Abu Dhabi, signage fabrication Abu Dhabi, 3D signage Abu Dhabi, wayfinding signage Abu Dhabi, vehicle fleet branding Abu Dhabi, UV printing Abu Dhabi",
+      path: "/",
       schema: {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Pro Graphics Building Maintenance",
-        "url": "https://prographics.onrender.com"
+        "@id": "https://prographicsbuildings.com/#website",
+        "name": "Pro Graphics Buildings Maintenance",
+        "url": "https://prographicsbuildings.com",
+        "description": "Abu Dhabi's trusted signage company — architectural signage, 3D letters, wayfinding systems, vehicle fleet branding, and commercial building maintenance across the UAE.",
+        "publisher": {
+          "@id": "https://prographicsbuildings.com/#organization"
+        },
+        "inLanguage": "en"
       }
     },
     services: {
-      title: "Signage Installation & Building Maintenance Services | Pro Graphics",
-      description: "Explore our expert branding and maintenance capabilities: indoor & outdoor signage solutions, custom LED boards, 3D letters fabrication, and vehicle wraps.",
-      keywords: "Signage Installation, Signage Solutions, Digital Signage, Indoor Signage, Outdoor Signage, Printing Services, Vehicle Branding, Shop Branding, Corporate Branding",
+      title: "Signage & Building Maintenance Services | Pro Graphics Abu Dhabi",
+      description: "Explore our full range of signage and building maintenance services in Abu Dhabi — custom 3D signage, UV printing, safety compliance signs, outdoor signage, wayfinding systems, vehicle fleet branding, exhibition kiosks, and large format printing.",
+      keywords: "signage services Abu Dhabi, custom signage Abu Dhabi, commercial signage Abu Dhabi, wayfinding signage Abu Dhabi, vehicle branding Abu Dhabi, UV printing Abu Dhabi, outdoor signage Abu Dhabi, safety signage Abu Dhabi, building maintenance Abu Dhabi",
       path: "/services",
       schema: {
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Signage & Property Maintenance Services",
-        "serviceType": "Signage Installation, Building Maintenance, Fleet Wrapping",
+        "name": "Signage & Building Maintenance Services Abu Dhabi",
+        "serviceType": [
+          "Architectural Signage",
+          "3D Signage Fabrication",
+          "Wayfinding Systems",
+          "Vehicle Fleet Branding",
+          "UV Printing",
+          "Safety & Compliance Signage",
+          "Outdoor Signage",
+          "Kiosk Solutions",
+          "Building Maintenance"
+        ],
         "provider": {
-          "@type": "LocalBusiness",
-          "name": "Pro Graphics Building Maintenance"
+          "@id": "https://prographicsbuildings.com/#organization"
         },
-        "areaServed": ["Abu Dhabi", "Dubai", "Sharjah", "UAE"],
-        "description": "Premium commercial building maintenance, wayfinding signage installation, fleet wrap branding, and laser formatting services."
+        "areaServed": [
+          { "@type": "City", "name": "Abu Dhabi" },
+          { "@type": "Country", "name": "United Arab Emirates" }
+        ],
+        "description": "Full range of professional signage fabrication, architectural branding, wayfinding systems, vehicle fleet wrapping, UV printing, and commercial building maintenance services in Abu Dhabi, UAE.",
+        "url": "https://prographicsbuildings.com/services"
       }
     },
     portfolio: {
-      title: "Branding Showcase & Maintenance Portfolio | Pro Graphics",
-      description: "View our completed signage and building maintenance projects: illuminated neon signs, vehicle fleet wraps, and structural building restoration work in Abu Dhabi.",
-      keywords: "Branding Solutions, Marketing Materials, Graphic Design Services, Wayfinding Signage, Abu Dhabi, Dubai, Signage Company UAE",
+      title: "Signage & Branding Portfolio | Pro Graphics Buildings Maintenance Abu Dhabi",
+      description: "Browse completed signage installations, vehicle fleet wraps, 3D metal letters, wayfinding systems, and architectural branding projects by Pro Graphics Buildings Maintenance across Abu Dhabi and the UAE.",
+      keywords: "signage portfolio Abu Dhabi, completed signage projects UAE, architectural signage projects Abu Dhabi, vehicle fleet wrapping portfolio UAE, 3D metal letters Abu Dhabi, wayfinding signage portfolio",
       path: "/portfolio",
       schema: {
         "@context": "https://schema.org",
-        "@type": "CreativeWork",
-        "name": "Branding & Signage Projects Portfolio",
-        "creator": {
-          "@type": "LocalBusiness",
-          "name": "Pro Graphics Building Maintenance"
-        },
-        "description": "Showcase of premium illuminated signs, vehicle branding, and structural building restoration work in Abu Dhabi."
+        "@type": "CollectionPage",
+        "name": "Signage & Branding Portfolio — Pro Graphics Buildings Maintenance",
+        "description": "Showcase of completed architectural signage installations, vehicle fleet wraps, 3D metal letter fabrication, wayfinding systems, and building maintenance projects across Abu Dhabi and the UAE.",
+        "url": "https://prographicsbuildings.com/portfolio",
+        "publisher": {
+          "@id": "https://prographicsbuildings.com/#organization"
+        }
       }
     },
     about: {
-      title: "About Us | Pro Graphics Building Maintenance Abu Dhabi",
-      description: "Learn about Pro Graphics' journey in Musaffah, our engineering standards, safety compliance, and the team delivering UAE's premium architectural signage.",
-      keywords: "Pro Graphics Building Maintenance, Signage Company Abu Dhabi, Wayfinding Systems UAE, CNC formatting Musaffah",
+      title: "About Pro Graphics Buildings Maintenance | Signage Company Abu Dhabi",
+      description: "Learn about Pro Graphics Buildings Maintenance — Abu Dhabi's signage fabrication company based in Musaffah. We deliver architectural signage, wayfinding systems, vehicle fleet wrapping, and commercial building maintenance across the UAE.",
+      keywords: "Pro Graphics Buildings Maintenance Abu Dhabi, signage company Abu Dhabi, signage fabrication Musaffah, architectural signage Abu Dhabi, wayfinding systems UAE, building maintenance company Abu Dhabi, signage installation Abu Dhabi",
       path: "/about",
       schema: {
         "@context": "https://schema.org",
         "@type": "AboutPage",
-        "name": "About Pro Graphics Building Maintenance",
-        "description": "Premium commercial building maintenance, wayfinding signage installation, fleet wrap branding, and laser formatting services provider.",
+        "name": "About Pro Graphics Buildings Maintenance",
+        "description": "Abu Dhabi's trusted signage fabrication company in Musaffah — delivering architectural signage, wayfinding systems, vehicle fleet branding, and commercial building maintenance services across the UAE.",
+        "url": "https://prographicsbuildings.com/about",
         "publisher": {
-          "@type": "LocalBusiness",
-          "name": "Pro Graphics Building Maintenance"
+          "@id": "https://prographicsbuildings.com/#organization"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prographicsbuildings.com/" },
+            { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://prographicsbuildings.com/about" }
+          ]
         }
       }
     },
     contact: {
-      title: "Contact Surveyor | Pro Graphics Building Maintenance Abu Dhabi",
-      description: "Brief our Musaffah industrial hub engineers. Request corporate site signage surveys, maintenance consultations, and official project quotations.",
-      keywords: "Building Maintenance UAE, Signage Company UAE, Marketing Agency UAE, Abu Dhabi HQ Contact",
+      title: "Contact Us | Pro Graphics Buildings Maintenance Abu Dhabi",
+      description: "Get in touch with Pro Graphics Buildings Maintenance in Abu Dhabi. Request a quote for architectural signage, wayfinding systems, vehicle fleet branding, UV printing, or commercial building maintenance services across the UAE.",
+      keywords: "contact Pro Graphics Abu Dhabi, signage quote Abu Dhabi, building maintenance quote UAE, signage company contact Abu Dhabi, request signage survey Abu Dhabi",
       path: "/contact",
       schema: {
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "name": "Contact Pro Graphics Building Maintenance",
-        "description": "Request official signage surveys, maintenance consultations, and project quotes in Abu Dhabi.",
-        "url": "https://prographics.onrender.com/contact"
+        "name": "Contact Pro Graphics Buildings Maintenance",
+        "description": "Request official signage surveys, wayfinding consultations, vehicle branding quotes, and project proposals in Abu Dhabi, UAE.",
+        "url": "https://prographicsbuildings.com/contact",
+        "publisher": {
+          "@id": "https://prographicsbuildings.com/#organization"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prographicsbuildings.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://prographicsbuildings.com/contact" }
+          ]
+        }
       }
+    }
+  };
+
+  // Per-service category SEO title/description map for richer keyword targeting
+  const serviceSeoMap: Record<string, { title: string; description: string; keywords: string }> = {
+    signage: {
+      title: "Custom Signage Solutions in Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "Pro Graphics delivers custom signage solutions in Abu Dhabi — 3D letters, LED sign boards, acrylic signs, stainless steel letters, and architectural signage fabrication for commercial and corporate clients.",
+      keywords: "custom signage Abu Dhabi, 3D signage Abu Dhabi, LED sign boards Abu Dhabi, architectural signage Abu Dhabi, signage fabrication Abu Dhabi, commercial signage Abu Dhabi"
+    },
+    uv: {
+      title: "UV Printing Services Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "High-resolution UV flatbed printing in Abu Dhabi — direct printing on acrylic, aluminum composite, foam board, and custom substrates. Scratch-resistant, weather-proof, and vibrant for retail, exhibitions, and outdoor use.",
+      keywords: "UV printing Abu Dhabi, UV flatbed printing Abu Dhabi, acrylic UV prints Abu Dhabi, aluminum composite printing UAE, UV printing services Abu Dhabi"
+    },
+    safety: {
+      title: "Safety & Compliance Signage Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "UAE Civil Defense compliant safety and compliance signage in Abu Dhabi — fire exit signs, fire safety packages, hazard warning signs, emergency evacuation floor plans, and full regulatory building signage.",
+      keywords: "safety signage Abu Dhabi, compliance signage Abu Dhabi, fire safety signs Abu Dhabi, UAE Civil Defense compliant signage, emergency evacuation signs Abu Dhabi"
+    },
+    outdoor: {
+      title: "Outdoor Signage Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "Durable outdoor signage solutions in Abu Dhabi built for the UAE climate — pylon and totem signs, building fascia signs, backlit outdoor signs, hoarding boards, and roadside advertising panels.",
+      keywords: "outdoor signage Abu Dhabi, pylon signs Abu Dhabi, building fascia signs Abu Dhabi, hoarding boards Abu Dhabi, outdoor advertising signs UAE"
+    },
+    wayfinding: {
+      title: "Wayfinding & Directional Signage Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "Comprehensive wayfinding and directional signage systems in Abu Dhabi — directional arrow signs, building maps, parking signage, lift and staircase signs, and complete campus navigation systems for malls, hospitals, and offices.",
+      keywords: "wayfinding signage Abu Dhabi, directional signage Abu Dhabi, wayfinding systems Abu Dhabi, building navigation signs Abu Dhabi, wayfinding and direction signs UAE"
+    },
+    kiosk: {
+      title: "Custom Kiosk Solutions Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "Custom-designed and fabricated kiosk solutions in Abu Dhabi — digital display kiosks, exhibition kiosks, retail kiosks, and reception information kiosks built to exact specifications with integrated branding.",
+      keywords: "kiosk solutions Abu Dhabi, custom kiosk Abu Dhabi, digital display kiosks Abu Dhabi, exhibition kiosks Abu Dhabi, retail kiosk fabrication UAE"
+    },
+    branding: {
+      title: "Vehicle Fleet Branding & Wrapping Abu Dhabi | Pro Graphics Buildings Maintenance",
+      description: "Professional vehicle fleet branding and wrapping solutions in Abu Dhabi — full vehicle wraps, partial wraps, sticker branding, window graphics, and wall murals using premium 3M and Avery Dennison materials.",
+      keywords: "vehicle fleet branding Abu Dhabi, vehicle wrapping Abu Dhabi, commercial vehicle wraps Abu Dhabi, fleet graphics Abu Dhabi, vehicle branding UAE"
     }
   };
 
@@ -184,28 +259,45 @@ export default function App() {
     if (activeTab === 'services' && selectedServiceCategory) {
       const category = STATIC_SERVICE_CATEGORIES.find(c => c.id === selectedServiceCategory);
       if (category) {
+        const customSeo = serviceSeoMap[category.id];
         return {
-          title: `${category.title} | Pro Graphics Building Maintenance UAE`,
-          description: category.desc,
-          keywords: `${category.title}, ${category.title} UAE, ${category.title} Abu Dhabi, ${category.title} Dubai, Pro Graphics`,
+          title: customSeo?.title || `${category.title} in Abu Dhabi | Pro Graphics Buildings Maintenance`,
+          description: customSeo?.description || category.desc,
+          keywords: customSeo?.keywords || `${category.title} Abu Dhabi, ${category.title} UAE, signage company Abu Dhabi, Pro Graphics`,
           path: `/services/${category.id}`,
           schema: {
             "@context": "https://schema.org",
-            "@type": "Service",
-            "name": category.title,
-            "serviceType": category.title,
-            "provider": {
-              "@type": "LocalBusiness",
-              "name": "Pro Graphics Building Maintenance"
-            },
-            "areaServed": ["Abu Dhabi", "Dubai", "Sharjah", "UAE"],
-            "description": category.desc
+            "@graph": [
+              {
+                "@type": "Service",
+                "name": customSeo?.title?.split('|')[0].trim() || `${category.title} Abu Dhabi`,
+                "serviceType": category.title,
+                "provider": {
+                  "@id": "https://prographicsbuildings.com/#organization"
+                },
+                "areaServed": [
+                  { "@type": "City", "name": "Abu Dhabi" },
+                  { "@type": "Country", "name": "United Arab Emirates" }
+                ],
+                "description": customSeo?.description || category.desc,
+                "url": `https://prographicsbuildings.com/services/${category.id}`
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prographicsbuildings.com/" },
+                  { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://prographicsbuildings.com/services" },
+                  { "@type": "ListItem", "position": 3, "name": category.breadcrumb, "item": `https://prographicsbuildings.com/services/${category.id}` }
+                ]
+              }
+            ]
           }
         };
       }
     }
     return baseConfig;
   };
+
 
   return (
     <div className="min-h-screen bg-brand-dark text-brand-primary flex flex-col justify-between font-sans selection:bg-brand-orange/35 selection:text-brand-primary">

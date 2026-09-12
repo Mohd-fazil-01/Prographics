@@ -112,7 +112,7 @@ export default function ServicesBento({
                       <div className="w-full h-44 rounded-lg overflow-hidden border border-brand-light-gray bg-brand-dark relative">
                         <img
                           src={cat.image}
-                          alt={cat.title}
+                          alt={cat.seoAlt || cat.title}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       </div>
@@ -202,7 +202,7 @@ export default function ServicesBento({
                         <div className="w-full h-40 rounded-lg overflow-hidden border border-brand-light-gray bg-brand-dark relative">
                           <img
                             src={item.image}
-                            alt={item.title}
+                            alt={item.seoAlt || `${item.title} — ${activeCategory.title} in Abu Dhabi`}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>

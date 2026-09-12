@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prographics.onrender.com/sitemap.xml
+Sitemap: https://prographicsbuildings.com/sitemap.xml

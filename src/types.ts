@@ -25,6 +25,7 @@ export interface SubServiceItem {
   title: string;
   desc: string;
   image?: string;
+  seoAlt?: string;
 }
 
 export interface ServiceCategory {
@@ -34,6 +35,7 @@ export interface ServiceCategory {
   desc: string;
   icon: string;
   image?: string;
+  seoAlt?: string;
   items: SubServiceItem[];
   gallery?: string[];
 }

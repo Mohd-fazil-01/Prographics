@@ -37,6 +37,30 @@ const PORTFOLIO_IMAGES = [
   pPrecision, pHeroBg, pSectorCorp, pSectorRetail
 ];
 
+// Descriptive SEO ALT texts for each portfolio image (order matches PORTFOLIO_IMAGES)
+const PORTFOLIO_ALTS = [
+  'Commercial signage installation project completed in Abu Dhabi by Pro Graphics Buildings Maintenance',
+  'Architectural wayfinding and directional signage system installed in Abu Dhabi UAE',
+  'Custom 3D letter signage fabricated and installed by Pro Graphics in Abu Dhabi',
+  'Premium building signage and branding project completed by Pro Graphics Abu Dhabi',
+  'Professional architectural signage and branding works in Abu Dhabi UAE',
+  'Aldar Headquarters — architectural facade signage and dimensional lettering Abu Dhabi',
+  'Cleveland Clinic wayfinding and directional signage system in Abu Dhabi',
+  'Aldar corporate campus exterior signage fabrication and installation Abu Dhabi',
+  'UAE University campus wayfinding pylon signage system in Al Ain Abu Dhabi',
+  'Yas Island hospitality venue custom illuminated entrance signage Abu Dhabi',
+  '3D stainless steel letter signage fabricated by Pro Graphics Musaffah Abu Dhabi',
+  'Indoor architectural signage and corporate branding for office interiors Abu Dhabi',
+  'LED illuminated sign board installation in Abu Dhabi UAE by Pro Graphics',
+  'Outdoor building fascia signage and pylon signs completed in Abu Dhabi',
+  'Vehicle fleet branding and commercial van wrapping by Pro Graphics Abu Dhabi',
+  'Custom commercial signage and branding project completed by Pro Graphics UAE',
+  'Precision signage fabrication in Pro Graphics Musaffah workshop Abu Dhabi',
+  'Premium architectural signage installation in high-end corporate lobby Abu Dhabi',
+  'Corporate sector building signage solutions and exterior branding Abu Dhabi',
+  'Retail sector commercial signage and storefront branding solutions Abu Dhabi'
+];
+
 export default function PortfolioDisplay() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,7 +109,7 @@ export default function PortfolioDisplay() {
             >
               <img
                 src={imgUrl}
-                alt={`Pro Graphics Portfolio Work ${index + 1}`}
+                alt={PORTFOLIO_ALTS[index] || `Pro Graphics Buildings Maintenance — completed signage project in Abu Dhabi UAE`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               {/* Eye Overlay */}

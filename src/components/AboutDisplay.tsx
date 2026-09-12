@@ -220,7 +220,7 @@ export default function AboutDisplay() {
       <section className="relative min-h-[360px] md:min-h-[440px] flex items-center select-none overflow-hidden bg-brand-primary border-b border-brand-light-gray">
         <div className="absolute inset-0 z-0">
           <img
-            alt="Pro Graphics Signage Workshop and Architectural Fabrication"
+            alt="Pro Graphics Buildings Maintenance — architectural signage workshop and fabrication facility in Musaffah, Abu Dhabi"
             referrerPolicy="no-referrer"
             className="w-full h-full object-cover opacity-35 about-hero-bg"
             src={aboutPrecisionImg}
@@ -283,7 +283,7 @@ export default function AboutDisplay() {
           <div className="md:col-span-5">
             <div className="relative h-[320px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray about-story-img">
               <img
-                alt="Pro Graphics team engineering dimensional signage layout"
+                alt="Pro Graphics team engineering and fabricating 3D metal signage in Abu Dhabi"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
                 src={teamImg}
@@ -354,7 +354,7 @@ export default function AboutDisplay() {
           <div className="md:col-span-5 order-last md:order-first">
             <div className="relative h-[320px] md:h-[420px] rounded-2xl overflow-hidden shadow-xl border border-brand-light-gray about-infra-img">
               <img
-                alt="Pro Graphics warehouse fabrication facilities in Musaffah Abu Dhabi"
+                alt="Pro Graphics signage fabrication and workshop facility at Musaffah Industrial Area, Abu Dhabi"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
                 src={workshopImg}

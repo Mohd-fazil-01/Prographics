@@ -166,7 +166,7 @@ export default function AboutPreview({ onLearnMore }: AboutPreviewProps) {
           <div className="md:col-span-6 space-y-6">
             <div className="relative h-[480px] rounded-xl overflow-hidden shadow-2xl border border-brand-light-gray group scroll-image">
               <img
-                alt="Master craftsman installing high-end dimensional metal lettering"
+                alt="Pro Graphics master craftsman installing 3D dimensional metal signage in Abu Dhabi UAE"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 src={aboutPrecisionImg}
